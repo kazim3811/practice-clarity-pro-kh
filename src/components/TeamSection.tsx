@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Check } from "lucide-react";
+import { Check, Info } from "lucide-react";
 
 const team = [
   {
@@ -33,7 +33,7 @@ const team = [
 ];
 
 const TeamSection = () => {
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [flippedIndex, setFlippedIndex] = useState<number | null>(null);
 
   return (
     <section className="relative bg-background py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
@@ -89,7 +89,7 @@ const TeamSection = () => {
         {/* Team cards */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
           {team.map((member, i) => {
-            const isActive = activeIndex === i;
+            const isFlipped = flippedIndex === i;
 
             return (
               <motion.div
@@ -100,57 +100,81 @@ const TeamSection = () => {
                 transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
                 className="flex flex-col items-center"
               >
-                {/* Portrait placeholder */}
-                <div className="w-full aspect-[3/4] max-w-[220px] rounded-2xl bg-secondary/60 border border-border/60 mb-5 overflow-hidden">
-                  <div className="w-full h-full flex items-center justify-center">
-                    <svg
-                      className="w-16 h-16 text-muted-foreground/30"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
+                {/* Flip card container */}
+                <div
+                  className="w-full max-w-[220px] aspect-[3/4] cursor-pointer"
+                  style={{ perspective: "800px" }}
+                  onClick={() => setFlippedIndex(isFlipped ? null : i)}
+                >
+                  <motion.div
+                    animate={{ rotateY: isFlipped ? 180 : 0 }}
+                    transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+                    className="relative w-full h-full"
+                    style={{ transformStyle: "preserve-3d" }}
+                  >
+                    {/* Front — portrait placeholder */}
+                    <div
+                      className="absolute inset-0 rounded-2xl bg-secondary/60 border border-border/60 overflow-hidden flex items-center justify-center"
+                      style={{ backfaceVisibility: "hidden" }}
                     >
-                      <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z" />
-                    </svg>
-                  </div>
+                      <svg
+                        className="w-16 h-16 text-muted-foreground/30"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z" />
+                      </svg>
+
+                      {/* Info button */}
+                      <div className="absolute bottom-3 right-3 w-7 h-7 rounded-full bg-primary/15 border border-primary/30 flex items-center justify-center backdrop-blur-sm hover:bg-primary/25 transition-colors">
+                        <Info className="w-3.5 h-3.5 text-primary" />
+                      </div>
+                    </div>
+
+                    {/* Back — credentials */}
+                    <div
+                      className="absolute inset-0 rounded-2xl bg-secondary border border-primary/20 overflow-hidden flex flex-col justify-center p-5"
+                      style={{
+                        backfaceVisibility: "hidden",
+                        transform: "rotateY(180deg)",
+                      }}
+                    >
+                      <h4 className="font-display text-sm font-semibold text-foreground mb-1">
+                        {member.name}
+                      </h4>
+                      <p className="font-body text-xs text-primary mb-4">
+                        {member.role}
+                      </p>
+
+                      <ul className="space-y-2.5">
+                        {member.credentials.map((cred, j) => (
+                          <li
+                            key={j}
+                            className="flex items-start gap-2 font-body text-xs text-muted-foreground leading-relaxed"
+                          >
+                            <Check className="w-3 h-3 shrink-0 mt-0.5 text-primary" />
+                            {cred}
+                          </li>
+                        ))}
+                      </ul>
+
+                      {/* Close hint */}
+                      <div className="absolute bottom-3 right-3 w-7 h-7 rounded-full bg-primary/15 border border-primary/30 flex items-center justify-center">
+                        <Info className="w-3.5 h-3.5 text-primary" />
+                      </div>
+                    </div>
+                  </motion.div>
                 </div>
 
-                {/* Name + role — clickable */}
-                <button
-                  onClick={() => setActiveIndex(isActive ? null : i)}
-                  className="text-center group cursor-pointer"
-                >
-                  <h3 className="font-display text-base sm:text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
+                {/* Name + role */}
+                <div className="text-center mt-5">
+                  <h3 className="font-display text-base sm:text-lg font-semibold text-foreground">
                     {member.name}
                   </h3>
                   <p className="font-body text-sm text-muted-foreground mt-0.5">
                     {member.role}
                   </p>
-                </button>
-
-                {/* Expandable credentials */}
-                <AnimatePresence>
-                  {isActive && (
-                    <motion.ul
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.35, ease: "easeInOut" }}
-                      className="overflow-hidden mt-4 space-y-2 w-full max-w-[220px]"
-                    >
-                      {member.credentials.map((cred, j) => (
-                        <motion.li
-                          key={j}
-                          initial={{ opacity: 0, x: -10 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: j * 0.08 }}
-                          className="flex items-start gap-2 font-body text-sm text-muted-foreground"
-                        >
-                          <Check className="w-3.5 h-3.5 shrink-0 mt-0.5 text-primary" />
-                          {cred}
-                        </motion.li>
-                      ))}
-                    </motion.ul>
-                  )}
-                </AnimatePresence>
+                </div>
               </motion.div>
             );
           })}
