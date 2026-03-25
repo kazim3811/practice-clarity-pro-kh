@@ -200,32 +200,58 @@ const BenefitsSection = () => {
             </motion.div>
           ))}
         </div>
+      </div>
 
-        {/* CTA Box */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6 }}
-          className="w-full rounded-2xl p-10 sm:p-14 text-center flex flex-col items-center"
-          style={{ background: "linear-gradient(135deg, hsla(143, 35%, 85%, 1) 12%, hsla(114, 67%, 47%, 1) 100%)" }}
+      {/* CTA Box — full-bleed */}
+      <motion.div
+        initial={{ opacity: 0, y: 30, scale: 0.95 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        className="max-w-6xl mx-auto rounded-3xl py-16 sm:py-20 px-6 sm:px-14 text-center flex flex-col items-center relative overflow-hidden"
+        style={{ background: "linear-gradient(135deg, hsla(143, 35%, 85%, 1) 12%, hsla(114, 67%, 47%, 1) 100%)" }}
+      >
+        {/* Radial glow overlay */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{ background: "radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.35) 0%, transparent 60%)" }}
+        />
+        {/* Dot pattern overlay */}
+        <div
+          className="absolute inset-0 pointer-events-none opacity-[0.06]"
+          style={{
+            backgroundImage: "radial-gradient(circle, hsl(var(--foreground)) 1px, transparent 1px)",
+            backgroundSize: "20px 20px",
+          }}
+        />
+
+        <h3 className="relative font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-primary-foreground mb-3">
+          Less Admin. <span className="opacity-90">More Patient Care.</span>
+        </h3>
+        <p className="relative font-display font-medium text-lg sm:text-xl text-primary-foreground/70 mb-4">
+          What are you waiting for?
+        </p>
+        <p className="relative text-sm text-primary-foreground/60 mb-10">
+          Join 50+ UK practices already transforming their operations
+        </p>
+        <motion.button
+          onClick={() => setDemoOpen(true)}
+          whileHover={{ scale: 1.04 }}
+          whileTap={{ scale: 0.98 }}
+          className="relative inline-flex items-center px-10 py-5 rounded-xl bg-white text-primary font-display font-semibold text-xl hover:brightness-95 transition-all shadow-[0_0_30px_rgba(34,197,94,0.3)]"
         >
-          <h3 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-primary-foreground mb-3">
-            Less Admin. <span className="opacity-90">More Patient Care.</span>
-          </h3>
-          <p className="font-display font-medium text-lg sm:text-xl text-primary-foreground/70 mb-8">
-            What are you waiting for?
-          </p>
-          <button
-            onClick={() => setDemoOpen(true)}
-            className="inline-flex items-center px-8 py-4 rounded-xl bg-white text-primary font-display font-semibold text-lg hover:brightness-95 hover:scale-[1.02] transition-all shadow-lg"
+          Start Your Journey
+          <motion.span
+            animate={{ x: [0, 4, 0] }}
+            transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+            className="ml-2"
           >
-            Start Your Journey
-            <ArrowRight className="ml-2 w-5 h-5" />
-          </button>
-        </motion.div>
+            <ArrowRight className="w-6 h-6" />
+          </motion.span>
+        </motion.button>
+      </motion.div>
 
-        <BookDemoDialog open={demoOpen} onOpenChange={setDemoOpen} />
+      <BookDemoDialog open={demoOpen} onOpenChange={setDemoOpen} />
       </div>
     </section>
   );
