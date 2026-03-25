@@ -92,8 +92,8 @@ export default {
           "50%": { opacity: "0.5" },
         },
         "pulse-border": {
-          "0%, 100%": { borderColor: "hsl(var(--destructive) / 0.3)", boxShadow: "0 0 0 0 hsl(var(--destructive) / 0)" },
-          "50%": { borderColor: "hsl(var(--destructive) / 0.7)", boxShadow: "0 0 12px 2px hsl(var(--destructive) / 0.15)" },
+          "0%, 100%": { borderColor: "hsl(var(--destructive) / 0.5)", boxShadow: "0 0 8px 1px hsl(var(--destructive) / 0.08)" },
+          "50%": { borderColor: "hsl(var(--destructive) / 1)", boxShadow: "0 0 20px 4px hsl(var(--destructive) / 0.25)" },
         },
       },
       animation: {
