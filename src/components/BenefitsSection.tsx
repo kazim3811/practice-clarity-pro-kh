@@ -209,7 +209,7 @@ const BenefitsSection = () => {
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.7, ease: "easeOut" }}
         className="max-w-6xl mx-auto rounded-3xl py-16 sm:py-20 px-6 sm:px-14 text-center flex flex-col items-center relative overflow-hidden"
-        style={{ background: "linear-gradient(135deg, hsla(143, 35%, 85%, 1) 12%, hsla(114, 67%, 47%, 1) 100%)" }}
+        style={{ background: "linear-gradient(135deg, hsla(172, 66%, 50%, 1) 0%, hsla(260, 45%, 65%, 1) 100%)" }}
       >
         {/* Radial glow overlay */}
         <div
@@ -238,7 +238,7 @@ const BenefitsSection = () => {
           onClick={() => setDemoOpen(true)}
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.98 }}
-          className="relative inline-flex items-center px-10 py-5 rounded-xl bg-white text-primary font-display font-semibold text-xl hover:brightness-95 transition-all shadow-[0_0_30px_rgba(34,197,94,0.3)]"
+          className="relative inline-flex items-center px-10 py-5 rounded-xl bg-white text-primary font-display font-semibold text-xl hover:brightness-95 transition-all shadow-[0_0_30px_rgba(45,212,191,0.3)]"
         >
           Start Your Journey
           <motion.span
