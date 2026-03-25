@@ -1,11 +1,15 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, Info } from "lucide-react";
+import teamMirren from "@/assets/team-mirren.jpg";
+import teamTak from "@/assets/team-tak.jpg";
+import teamKazim from "@/assets/team-kazim.jpg";
 
 const team = [
   {
     name: "Dr Mirren Carpenter",
     role: "MD, Reach Healthcare",
+    image: teamMirren,
     credentials: [
       "Credential placeholder 1",
       "Credential placeholder 2",
@@ -15,6 +19,7 @@ const team = [
   {
     name: "Tak Cheung",
     role: "Product Director",
+    image: teamTak,
     credentials: [
       "Credential placeholder 1",
       "Credential placeholder 2",
@@ -24,6 +29,7 @@ const team = [
   {
     name: "Kazim Huseein",
     role: "Chief Advisor",
+    image: teamKazim,
     credentials: [
       "Credential placeholder 1",
       "Credential placeholder 2",
@@ -112,18 +118,19 @@ const TeamSection = () => {
                     className="relative w-full h-full"
                     style={{ transformStyle: "preserve-3d" }}
                   >
-                    {/* Front — portrait placeholder */}
+                    {/* Front — portrait */}
                     <div
-                      className="absolute inset-0 rounded-2xl bg-secondary/60 border border-border/60 overflow-hidden flex items-center justify-center"
+                      className="absolute inset-0 rounded-2xl bg-secondary/60 border border-border/60 overflow-hidden"
                       style={{ backfaceVisibility: "hidden" }}
                     >
-                      <svg
-                        className="w-16 h-16 text-muted-foreground/30"
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z" />
-                      </svg>
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                        width={512}
+                        height={680}
+                      />
 
                       {/* Info button */}
                       <div className="absolute bottom-3 right-3 w-7 h-7 rounded-full bg-primary/15 border border-primary/30 flex items-center justify-center backdrop-blur-sm hover:bg-primary/25 transition-colors">
