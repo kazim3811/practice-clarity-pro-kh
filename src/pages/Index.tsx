@@ -14,6 +14,7 @@ const Index = () => {
       <PainPoints />
       <KeyFeatures />
       <TeamSection />
+      <BenefitsSection />
       <Footer />
     </div>
   );
