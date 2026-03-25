@@ -30,11 +30,10 @@ const CtaSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.6 }}
-          className="font-display font-bold text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[1.05] tracking-tight mb-10"
+          className="font-display font-extrabold text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[1.05] tracking-tight mb-10 whitespace-nowrap"
           style={{ color: "hsl(222 47% 11%)" }}
         >
-          What Are You{" "}
-          <span className="text-gradient">Waiting For?</span>
+          What Are You <span className="text-gradient">Waiting For?</span>
         </motion.h2>
 
         <motion.div
