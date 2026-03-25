@@ -19,14 +19,14 @@ const Header = () => {
               <span className="font-display font-bold text-primary-foreground text-sm">S</span>
             </div>
             <span className="font-display font-bold text-headline text-xl tracking-tight">
-              Super<span className="text-primary">GP</span>
+              Super<span className="text-gradient">GP</span>
             </span>
           </div>
 
           <nav className="hidden md:flex items-center gap-8">
-            <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Features</a>
-            <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Pricing</a>
-            <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">About</a>
+            <a href="#" className="text-sm font-body text-muted-foreground hover:text-foreground transition-colors">Features</a>
+            <a href="#" className="text-sm font-body text-muted-foreground hover:text-foreground transition-colors">Pricing</a>
+            <a href="#" className="text-sm font-body text-muted-foreground hover:text-foreground transition-colors">About</a>
           </nav>
 
           <button

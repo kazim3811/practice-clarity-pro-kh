@@ -49,7 +49,7 @@ const Hero = () => {
         >
           Run Your Clinic
           <br />
-          <span className="text-primary">Without the Chaos.</span>
+          <span className="text-gradient">Without the Chaos.</span>
         </motion.h1>
 
         {/* Subheading */}

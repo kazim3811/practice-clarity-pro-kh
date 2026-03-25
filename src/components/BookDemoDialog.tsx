@@ -49,7 +49,7 @@ const BookDemoDialog = ({ open, onOpenChange }: BookDemoDialogProps) => {
       <DialogContent className="sm:max-w-lg bg-background border-border max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="font-display text-xl text-headline">Book a Demo</DialogTitle>
-          <DialogDescription>See how SuperGP can transform your practice. Fill in your details and we'll be in touch.</DialogDescription>
+          <DialogDescription className="font-body">See how SuperGP can transform your practice. Fill in your details and we'll be in touch.</DialogDescription>
         </DialogHeader>
 
         <form onSubmit={handleSubmit} className="space-y-4 mt-2">
