@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import PainPoints from "@/components/PainPoints";
 import KeyFeatures from "@/components/KeyFeatures";
 import TeamSection from "@/components/TeamSection";
+import CtaSection from "@/components/CtaSection";
 
 const Index = () => {
   return (
@@ -12,6 +13,7 @@ const Index = () => {
       <PainPoints />
       <KeyFeatures />
       <TeamSection />
+      <CtaSection />
     </div>
   );
 };
