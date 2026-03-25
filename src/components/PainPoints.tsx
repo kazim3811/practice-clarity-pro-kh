@@ -42,7 +42,8 @@ const PainCard = ({ point, index }: { point: typeof painPoints[number]; index: n
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.5, delay: index * 0.1, ease: [0.25, 0.1, 0.25, 1] }}
-      className="group flex flex-col rounded-2xl border border-border/60 bg-muted/40 backdrop-blur-sm overflow-hidden cursor-default hover:border-destructive/30 transition-colors h-full"
+      className="group flex flex-col rounded-2xl border border-destructive/40 bg-muted/40 backdrop-blur-sm overflow-hidden cursor-default hover:border-destructive/60 h-full animate-pulse-border"
+      style={{ animationDelay: `${index * 0.3}s` }}
     >
       <div className="flex-1 p-5 sm:p-6 flex flex-col">
         <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-destructive/10 mb-4 shrink-0">
