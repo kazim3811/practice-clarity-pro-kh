@@ -1,25 +1,20 @@
 
 
-## Plan: Add Benefits Section with Light Mode + CTA
+## Plan: Rewrite Pain Points Card Copy
 
-### New file: `src/components/BenefitsSection.tsx`
+Update the `painPoints` array in `src/components/PainPoints.tsx` with the new titles and descriptions provided.
 
-A new section placed after `TeamSection` in `Index.tsx` that uses a **light/white background** to contrast with the dark sections above and below.
+### Changes to `src/components/PainPoints.tsx`
 
-**Structure:**
-1. **Badge** — "WHY SUPERGP" pill badge (dark text on light bg)
-2. **Benefits grid** — 5 benefit items in a clean layout (`grid-cols-1 md:grid-cols-2 lg:grid-cols-3`, last 2 centered). Each item: a green checkmark/icon, bold headline text, no extra description needed since the points are self-explanatory.
-3. **CTA block** — Large bold heading "What Are You Waiting For?" followed by the "Book a Demo Now" button with arrow icon. Uses `BookDemoDialog`.
+Replace the 5 pain point entries:
 
-**Light mode styling:**
-- Section bg: `bg-white` (or `bg-[#f8f9fc]`)
-- Text: dark colors (`text-gray-900`, `text-gray-600`)
-- Icons: primary/teal color
-- CTA button: keeps `bg-primary text-primary-foreground`
-- This creates a strong visual break from the dark theme above/below
+| # | New Header | New Body |
+|---|-----------|----------|
+| 1 | Your Rota Falls Apart Weekly | Your rota lives in spreadsheets, breaks constantly, and leaves you scrambling to plug last-minute gaps. |
+| 2 | You're Not Audit-Ready | Compliance is scattered across systems, so when inspections come, you're chasing evidence instead of being prepared. |
+| 3 | You're Leaving Appointments on the Table | Without a clear view of staffing and rooms, capacity goes unused and patients go unseen. |
+| 4 | Your Team Is Drowning in Admin | Endless WhatsApps, emails, and updates eat into your day and slow everything down. |
+| 5 | Everything Lives in Different Places | Staff, rota, and compliance data are split across tools—leading to duplication, confusion, and mistakes. |
 
-**Animations:** Staggered `motion.div` fade-in for each benefit, scroll-triggered.
-
-### Edit: `src/pages/Index.tsx`
-- Import and add `<BenefitsSection />` between `<TeamSection />` and `<Footer />`.
+Impact lines and icons remain unchanged. Single file edit only.
 
