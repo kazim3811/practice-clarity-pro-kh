@@ -208,8 +208,7 @@ const BenefitsSection = () => {
         whileInView={{ opacity: 1, y: 0, scale: 1 }}
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.7, ease: "easeOut" }}
-        className="max-w-6xl mx-auto rounded-3xl py-16 sm:py-20 px-6 sm:px-14 text-center flex flex-col items-center relative overflow-hidden"
-        style={{ background: "linear-gradient(135deg, hsla(172, 66%, 50%, 1) 0%, hsla(260, 45%, 65%, 1) 100%)" }}
+        className="max-w-6xl mx-auto rounded-3xl py-16 sm:py-20 px-6 sm:px-14 text-center flex flex-col items-center relative overflow-hidden bg-background"
       >
         {/* Radial glow overlay */}
         <div
