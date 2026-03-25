@@ -20,7 +20,7 @@ const CtaSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.6 }}
-          className="font-display font-extrabold text-5xl sm:text-6xl lg:text-7xl leading-tight text-foreground mb-3 whitespace-nowrap"
+          className="font-display font-extrabold text-5xl sm:text-6xl lg:text-7xl leading-tight text-foreground mb-3"
         >
           Less Admin. <span className="text-gradient">More Patient Care.</span>
         </motion.h2>
