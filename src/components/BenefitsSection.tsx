@@ -40,8 +40,7 @@ const BenefitsSection = () => {
           className="font-display font-bold text-center text-3xl sm:text-4xl lg:text-5xl leading-tight max-w-3xl mx-auto mb-12"
           style={{ color: "hsl(222 47% 11%)" }}
         >
-          Take Control of Your Clinic Operations—
-          <span className="text-gradient">So You Can Focus on Patient Care.</span>
+          Less Admin. <span className="text-gradient">More Patient Care.</span>
         </motion.h2>
 
         {/* Benefits grid */}
