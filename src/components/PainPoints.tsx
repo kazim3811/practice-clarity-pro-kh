@@ -4,32 +4,32 @@ import { Users, ShieldAlert, CalendarClock, MessageSquare, Database } from "luci
 const painPoints = [
   {
     icon: Users,
-    header: "Workforce Instability",
-    body: "Spreadsheet rotas create single points of failure and reactive locum spending.",
+    header: "Your Rota Falls Apart Weekly",
+    body: "Your rota lives in spreadsheets, breaks constantly, and leaves you scrambling to plug last-minute gaps.",
     impact: "£50k+ annual locum overspend",
   },
   {
     icon: ShieldAlert,
-    header: "Clinical Governance Gaps",
-    body: "Siloed compliance data leaves you exposed during CQC inspections.",
+    header: "You're Not Audit-Ready",
+    body: "Compliance is scattered across systems, so when inspections come, you're chasing evidence instead of being prepared.",
     impact: "Critical audit risk",
   },
   {
     icon: CalendarClock,
-    header: "Unrealized Capacity",
-    body: "No unified view of availability means missed patient access targets.",
+    header: "You're Leaving Appointments on the Table",
+    body: "Without a clear view of staffing and rooms, capacity goes unused and patients go unseen.",
     impact: "15–20% appointment slots wasted",
   },
   {
     icon: MessageSquare,
-    header: "Administrative Friction",
-    body: "Coordination scattered across WhatsApp and email drains management time.",
+    header: "Your Team Is Drowning in Admin",
+    body: "Endless WhatsApps, emails, and updates eat into your day and slow everything down.",
     impact: "20%+ of bandwidth lost",
   },
   {
     icon: Database,
-    header: "Information Silos",
-    body: "Disconnected HR, rota, and compliance data causes duplication and errors.",
+    header: "Everything Lives in Different Places",
+    body: "Staff, rota, and compliance data are split across tools—leading to duplication, confusion, and mistakes.",
     impact: "Hours of repeated data entry weekly",
   },
 ];
