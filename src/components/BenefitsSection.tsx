@@ -31,6 +31,19 @@ const BenefitsSection = () => {
           </span>
         </motion.div>
 
+        {/* Title */}
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="font-display font-bold text-center text-3xl sm:text-4xl lg:text-5xl leading-tight max-w-3xl mx-auto mb-12"
+          style={{ color: "hsl(222 47% 11%)" }}
+        >
+          Take Control of Your Clinic Operations—
+          <span className="text-gradient">So You Can Focus on Patient Care.</span>
+        </motion.h2>
+
         {/* Benefits grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-20">
           {benefits.map((benefit, i) => (
