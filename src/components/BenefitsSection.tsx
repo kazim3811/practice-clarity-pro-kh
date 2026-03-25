@@ -225,20 +225,20 @@ const BenefitsSection = () => {
           }}
         />
 
-        <h3 className="relative font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-primary-foreground mb-3">
-          Less Admin. <span className="opacity-90">More Patient Care.</span>
+        <h3 className="relative font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white mb-3">
+          Less Admin. <span className="text-yellow-100">More Patient Care.</span>
         </h3>
-        <p className="relative font-display font-medium text-lg sm:text-xl text-primary-foreground/70 mb-4">
+        <p className="relative font-display font-medium text-xl sm:text-2xl text-white mb-4">
           What are you waiting for?
         </p>
-        <p className="relative text-sm text-primary-foreground/60 mb-10">
+        <p className="relative text-sm text-white/70 mb-10">
           Join 50+ UK practices already transforming their operations
         </p>
         <motion.button
           onClick={() => setDemoOpen(true)}
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.98 }}
-          className="relative inline-flex items-center px-10 py-5 rounded-xl bg-white text-primary font-display font-semibold text-xl hover:brightness-95 transition-all shadow-[0_0_30px_rgba(45,212,191,0.3)]"
+          className="relative inline-flex items-center px-10 py-5 rounded-xl bg-primary text-primary-foreground font-display font-semibold text-xl hover:brightness-110 transition-all shadow-lg shadow-primary/20"
         >
           Start Your Journey
           <motion.span
