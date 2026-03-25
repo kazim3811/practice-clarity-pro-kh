@@ -3,7 +3,7 @@ import Hero from "@/components/Hero";
 import PainPoints from "@/components/PainPoints";
 import KeyFeatures from "@/components/KeyFeatures";
 import TeamSection from "@/components/TeamSection";
-
+import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
@@ -13,7 +13,7 @@ const Index = () => {
       <PainPoints />
       <KeyFeatures />
       <TeamSection />
-      
+      <Footer />
     </div>
   );
 };
