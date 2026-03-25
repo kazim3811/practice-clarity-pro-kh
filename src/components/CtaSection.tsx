@@ -7,7 +7,7 @@ const CtaSection = () => {
   const [demoOpen, setDemoOpen] = useState(false);
 
   return (
-    <section className="relative overflow-hidden bg-background py-16 sm:py-20 px-4 sm:px-6 lg:px-8">
+    <section className="relative overflow-hidden bg-background py-16 sm:py-20 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center min-h-[280px]">
       {/* Background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full bg-primary/10 blur-[140px] pointer-events-none" />
       <div className="absolute top-1/4 left-1/4 w-[300px] h-[300px] rounded-full bg-[hsl(260,45%,65%)]/8 blur-[120px] pointer-events-none" />
