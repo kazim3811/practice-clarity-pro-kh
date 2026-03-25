@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, Info } from "lucide-react";
-import BookDemoDialog from "./BookDemoDialog";
 
 const team = [
   {
@@ -35,7 +34,6 @@ const team = [
 
 const TeamSection = () => {
   const [flippedIndex, setFlippedIndex] = useState<number | null>(null);
-  const [demoOpen, setDemoOpen] = useState(false);
 
   return (
     <section className="relative bg-background py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
@@ -182,26 +180,6 @@ const TeamSection = () => {
           })}
         </div>
 
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          className="flex justify-center mt-16"
-        >
-          <button
-            onClick={() => setDemoOpen(true)}
-            className="inline-flex items-center px-10 py-5 rounded-xl bg-primary text-primary-foreground font-display font-semibold text-lg hover:brightness-110 hover:scale-[1.02] transition-all shadow-lg shadow-primary/20"
-          >
-            Book a Demo Now
-            <svg className="ml-2 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </button>
-        </motion.div>
-
-        <BookDemoDialog open={demoOpen} onOpenChange={setDemoOpen} />
       </div>
     </section>
   );
