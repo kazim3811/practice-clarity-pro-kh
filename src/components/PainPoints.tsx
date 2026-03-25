@@ -153,13 +153,13 @@ const PainPoints = () => {
 
                   {/* Content card */}
                   <motion.div
-                    initial={{ opacity: 0, x: isRight ? 60 : -60, y: 10 }}
-                    whileInView={{ opacity: 1, x: 0, y: 0 }}
-                    viewport={{ once: true, amount: 0.3 }}
+                    initial={{ opacity: 0, x: isRight ? 120 : -120 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
                     transition={{
-                      duration: 0.55,
-                      ease: "easeOut",
-                      delay: 0.15 + index * 0.08,
+                      duration: 0.7,
+                      ease: [0.25, 0.1, 0.25, 1],
+                      delay: 0.1,
                     }}
                     whileHover={{
                       scale: 1.02,
