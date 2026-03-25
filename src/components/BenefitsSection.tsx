@@ -238,7 +238,7 @@ const BenefitsSection = () => {
           onClick={() => setDemoOpen(true)}
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.98 }}
-          className="relative inline-flex items-center px-10 py-5 rounded-xl bg-white text-primary font-display font-semibold text-xl hover:brightness-95 transition-all relative inline-flex items-center px-10 py-5 rounded-xl bg-white text-primary font-display font-semibold text-xl hover:brightness-95 transition-all shadow-[0_0_30px_rgba(45,212,191,0.3)]""
+          className="relative inline-flex items-center px-10 py-5 rounded-xl bg-white text-primary font-display font-semibold text-xl hover:brightness-95 transition-all shadow-[0_0_30px_rgba(45,212,191,0.3)]"
         >
           Start Your Journey
           <motion.span
