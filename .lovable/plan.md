@@ -1,36 +1,38 @@
 
 
-## Plan: Timeline Layout for Pain Points Section
+## Plan: Bring the Pain Points Timeline to Life
 
-### Overview
-Redesign the Pain Points section to use a vertical timeline with a central line, blocks alternating left/right attached to that line, with scroll-triggered animations.
+### Problem
+The section currently has basic fade/slide animations but feels flat -- no visual depth, no interactivity, and the timeline itself is static.
 
 ### Changes to `src/components/PainPoints.tsx`
 
-**Layout:**
-- Add a vertical line down the center using a `div` with `absolute` positioning, thin width (2px), full height, teal/gray color
-- Each block becomes a timeline entry: 50% width, positioned left or right of the center line
-- A small circle/dot on the center line at each block's position (connection point)
-- On mobile: single column with line on the left edge
+**1. Animated timeline line (draws down as user scrolls)**
+- Replace the static vertical line with a `motion.div` that grows its height using `scaleY` animated via `whileInView`, giving a "drawing" effect as the user scrolls into the section.
 
-**Animation:**
-- Each block fades in + slides horizontally from its side (left blocks slide from left, right from right)
-- The connecting dot scales in when the block enters viewport
-- Staggered timing using `transition.delay` based on index
+**2. Pulsing, glowing dots**
+- Add a `box-shadow` glow pulse animation to each timeline dot (teal glow expanding/contracting).
+- Add a subtle ring/ripple effect behind each dot that animates outward when the dot appears.
 
-**Structure per block:**
-```text
-  [Left block]  ●——  |
-                     |
-                |  ——●  [Right block]
-                     |
-  [Left block]  ●——  |
-```
+**3. Card-style content blocks with hover effects**
+- Wrap each block in a card with `bg-gray-50`, rounded corners, subtle border, and shadow.
+- Add `whileHover={{ scale: 1.02, boxShadow: "..." }}` for a lift effect on hover.
+- Add a teal left/right border accent on the card edge closest to the timeline.
 
-- Icon + header + body inside each block card
-- Dot sits on the center line with a small horizontal connector line
+**4. Staggered timing**
+- Use index-based `delay` (e.g., `delay: index * 0.1`) so blocks cascade in sequence rather than all appearing at the same threshold.
 
-### Responsive
-- `md:` breakpoint for two-column timeline
-- Below `md`: vertical line on left, all blocks on right
+**5. Icon animation**
+- Animate icons with a slight rotate + scale spring when they enter view.
+
+**6. Connector lines from dot to card**
+- Add small horizontal lines connecting each dot to its card, animated to draw from center outward.
+
+### Summary of visual enhancements
+- Drawing timeline line
+- Glowing/pulsing dots with ripple
+- Elevated cards with hover lift
+- Staggered cascade timing
+- Animated icons
+- Horizontal connector lines
 
