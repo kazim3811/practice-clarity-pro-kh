@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Users, ShieldAlert, CalendarClock, MessageSquare, Database } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const painPoints = [
   {
