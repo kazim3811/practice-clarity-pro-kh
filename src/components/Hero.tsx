@@ -1,7 +1,11 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import DashboardMockup from "./DashboardMockup";
+import BookDemoDialog from "./BookDemoDialog";
 
 const Hero = () => {
+  const [demoOpen, setDemoOpen] = useState(false);
+
   return (
     <section className="relative min-h-screen flex flex-col justify-center overflow-hidden pt-16">
       {/* Background grid */}
@@ -60,15 +64,15 @@ const Hero = () => {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10"
         >
-          <a
-            href="#"
+          <button
+            onClick={() => setDemoOpen(true)}
             className="inline-flex items-center px-8 py-4 rounded-xl bg-primary text-primary-foreground font-display font-semibold text-base hover:brightness-110 hover:scale-[1.02] transition-all shadow-lg shadow-primary/20"
           >
             Book a Demo
             <svg className="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
-          </a>
+          </button>
           <a
             href="#"
             className="inline-flex items-center px-8 py-4 rounded-xl border border-border bg-surface text-foreground font-display font-semibold text-base hover:bg-surface-raised hover:border-primary/30 transition-all"
@@ -82,6 +86,8 @@ const Hero = () => {
           <DashboardMockup />
         </div>
       </div>
+
+      <BookDemoDialog open={demoOpen} onOpenChange={setDemoOpen} />
     </section>
   );
 };
