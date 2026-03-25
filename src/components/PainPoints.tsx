@@ -90,7 +90,7 @@ const PainPoints = () => {
         >
           Stop Managing Your Rota.
           <br />
-          Start Leading Your Surgery.
+          <span className="text-gradient">Start Leading Your Surgery.</span>
         </motion.h2>
 
         {/* Timeline container */}
@@ -199,7 +199,7 @@ const PainPoints = () => {
                         <h3 className="font-display text-xl sm:text-2xl font-semibold text-foreground mb-1.5">
                           {point.header}
                         </h3>
-                        <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
+                        <p className="font-body text-muted-foreground text-base sm:text-lg leading-relaxed">
                           {point.body}
                         </p>
                       </div>
