@@ -10,7 +10,7 @@ const Hero = () => {
     <section
       className="relative min-h-screen flex flex-col justify-center overflow-hidden pt-16"
       style={{
-        background: "linear-gradient(135deg, hsla(259, 42%, 86%, 1) 0%, hsla(192, 57%, 78%, 1) 24%, hsla(0, 0%, 96%, 1) 100%)",
+        background: "linear-gradient(135deg, hsla(259, 42%, 86%, 1) 0%, hsla(193, 37%, 85%, 1) 24%, hsla(0, 0%, 96%, 1) 100%)",
       }}
     >
       {/* Background grid */}
