@@ -1,38 +1,23 @@
 
 
-## Plan: Bring the Pain Points Timeline to Life
+## Plan: Fix Pain Points Block Transitions
 
 ### Problem
-The section currently has basic fade/slide animations but feels flat -- no visual depth, no interactivity, and the timeline itself is static.
+On mobile (391px viewport), all blocks sit to the right of the timeline line, but the animation alternates `x: -120` and `x: 120`. Blocks animating from `x: -120` slide in from behind the timeline/off-screen edge and appear invisible or broken. Additionally, `viewport.once: true` with `amount: 0.2` may cause blocks already in view on load to never animate.
 
 ### Changes to `src/components/PainPoints.tsx`
 
-**1. Animated timeline line (draws down as user scrolls)**
-- Replace the static vertical line with a `motion.div` that grows its height using `scaleY` animated via `whileInView`, giving a "drawing" effect as the user scrolls into the section.
+**1. Responsive slide direction**
+- On mobile, all blocks should slide in from the right (`x: 60`) since they're all positioned to the right of the left-aligned line.
+- On desktop, keep the alternating left/right slide (`x: isRight ? 120 : -120`).
+- Use a CSS-media-query-aware approach or simply always slide from the right on mobile by reducing the offset and making it consistent: use `x: 80` for all on mobile, and the current alternating logic only on `md:` and above. Since framer-motion doesn't do media queries natively, we'll use the `useIsMobile` hook already in the project to conditionally set the `x` value.
 
-**2. Pulsing, glowing dots**
-- Add a `box-shadow` glow pulse animation to each timeline dot (teal glow expanding/contracting).
-- Add a subtle ring/ripple effect behind each dot that animates outward when the dot appears.
+**2. Lower viewport threshold**
+- Change `viewport.amount` from `0.2` to `0.05` so animations trigger as soon as blocks barely enter the screen.
 
-**3. Card-style content blocks with hover effects**
-- Wrap each block in a card with `bg-gray-50`, rounded corners, subtle border, and shadow.
-- Add `whileHover={{ scale: 1.02, boxShadow: "..." }}` for a lift effect on hover.
-- Add a teal left/right border accent on the card edge closest to the timeline.
+**3. Remove `once: true` temporarily for debugging, then keep it**
+- Keep `once: true` but ensure the initial state is correct so blocks don't get stuck invisible.
 
-**4. Staggered timing**
-- Use index-based `delay` (e.g., `delay: index * 0.1`) so blocks cascade in sequence rather than all appearing at the same threshold.
-
-**5. Icon animation**
-- Animate icons with a slight rotate + scale spring when they enter view.
-
-**6. Connector lines from dot to card**
-- Add small horizontal lines connecting each dot to its card, animated to draw from center outward.
-
-### Summary of visual enhancements
-- Drawing timeline line
-- Glowing/pulsing dots with ripple
-- Elevated cards with hover lift
-- Staggered cascade timing
-- Animated icons
-- Horizontal connector lines
+### Files modified
+- `src/components/PainPoints.tsx` — import `useIsMobile`, use it to set slide direction, lower viewport amount.
 
