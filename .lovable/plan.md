@@ -1,23 +1,33 @@
 
 
-## Plan: Fix Pain Points Block Transitions
+## Plan: Visual Hierarchy & Consistent Typography
 
 ### Problem
-On mobile (391px viewport), all blocks sit to the right of the timeline line, but the animation alternates `x: -120` and `x: 120`. Blocks animating from `x: -120` slide in from behind the timeline/off-screen edge and appear invisible or broken. Additionally, `viewport.once: true` with `amount: 0.2` may cause blocks already in view on load to never animate.
+Titles lack visual punch — all are flat single-color text. Font usage (`font-display` vs `font-body`) isn't consistently applied across all components.
 
-### Changes to `src/components/PainPoints.tsx`
+### Changes
 
-**1. Responsive slide direction**
-- On mobile, all blocks should slide in from the right (`x: 60`) since they're all positioned to the right of the left-aligned line.
-- On desktop, keep the alternating left/right slide (`x: isRight ? 120 : -120`).
-- Use a CSS-media-query-aware approach or simply always slide from the right on mobile by reducing the offset and making it consistent: use `x: 80` for all on mobile, and the current alternating logic only on `md:` and above. Since framer-motion doesn't do media queries natively, we'll use the `useIsMobile` hook already in the project to conditionally set the `x` value.
+**1. Gradient titles (`src/index.css`)**
+- Add a reusable `.text-gradient` utility class with a teal-to-purple gradient (`from primary through a lighter teal to a soft lavender`) using `background-clip: text` and `text-fill-color: transparent`.
 
-**2. Lower viewport threshold**
-- Change `viewport.amount` from `0.2` to `0.05` so animations trigger as soon as blocks barely enter the screen.
+**2. Apply gradient to key section titles**
 
-**3. Remove `once: true` temporarily for debugging, then keep it**
-- Keep `once: true` but ensure the initial state is correct so blocks don't get stuck invisible.
+- **Hero (`Hero.tsx`)**: Apply gradient to the "Without the Chaos." span (replace `text-primary` with the gradient class).
+- **Pain Points (`PainPoints.tsx`)**: Apply gradient to "Start Leading Your Surgery." line.
+- **Header (`Header.tsx`)**: Apply gradient to the "GP" text in the logo.
+
+**3. Font consistency audit**
+
+- **Hero.tsx**: Ensure `font-display` on h1, `font-body` on paragraph. Already correct.
+- **PainPoints.tsx**: Ensure section heading uses `font-display`, card body text uses `font-body` (add `font-body` to the `<p>` tags).
+- **Header.tsx**: Ensure nav links use `font-body`. Add explicit `font-body` to nav `<a>` tags.
+- **DashboardMockup.tsx**: Already uses `font-body` — correct.
+- **BookDemoDialog.tsx**: Add `font-body` to form labels and description text for consistency.
 
 ### Files modified
-- `src/components/PainPoints.tsx` — import `useIsMobile`, use it to set slide direction, lower viewport amount.
+- `src/index.css` — add `.text-gradient` utility
+- `src/components/Hero.tsx` — gradient on accent line
+- `src/components/PainPoints.tsx` — gradient on second title line, add `font-body` to body text
+- `src/components/Header.tsx` — gradient on "GP", `font-body` on nav links
+- `src/components/BookDemoDialog.tsx` — `font-body` on description/labels
 
