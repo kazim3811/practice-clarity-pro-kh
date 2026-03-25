@@ -252,7 +252,6 @@ const BenefitsSection = () => {
       </motion.div>
 
       <BookDemoDialog open={demoOpen} onOpenChange={setDemoOpen} />
-      </div>
     </section>
   );
 };
