@@ -201,31 +201,6 @@ const BenefitsSection = () => {
           ))}
         </div>
 
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.6 }}
-          className="text-center relative"
-        >
-          {/* Subtle radial glow */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <div className="w-96 h-48 rounded-full bg-primary/8 blur-3xl" />
-          </div>
-
-          <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-gray-900 mb-8 relative">
-            What Are You Waiting For?
-          </h2>
-          <button
-            onClick={() => setDemoOpen(true)}
-            className="relative inline-flex items-center px-10 py-5 rounded-xl bg-primary text-primary-foreground font-display font-semibold text-lg hover:brightness-110 hover:scale-[1.02] transition-all shadow-lg shadow-primary/20"
-          >
-            Book a Demo Now
-            <ArrowRight className="ml-2 w-5 h-5" />
-          </button>
-        </motion.div>
-
         <BookDemoDialog open={demoOpen} onOpenChange={setDemoOpen} />
       </div>
     </section>
