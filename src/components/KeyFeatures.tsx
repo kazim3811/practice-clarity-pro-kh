@@ -1,50 +1,70 @@
-import { motion } from "framer-motion";
-import { Calendar, LayoutDashboard, CheckSquare, Building2, Users, FileText, Check } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Calendar, LayoutDashboard, CheckSquare, Building2, Users, FileText, Check, Play } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { useState } from "react";
 
 const features = [
   {
+    id: "rota",
     icon: Calendar,
     title: "Smart Rota Management",
+    shortTitle: "Rotas",
+    videoLabel: "See how rotas are built in seconds",
     lines: [
       "Plan rotas by room, shift, and site — not just names on a list.",
       "Copy weeks instantly, validate staffing, and publish with confidence.",
     ],
   },
   {
+    id: "dashboard",
     icon: LayoutDashboard,
     title: "Live Practice Dashboard",
+    shortTitle: "Dashboard",
+    videoLabel: "Real-time visibility across your practice",
     lines: [
       "Staff see exactly what they need for the day.",
       "Managers get full visibility across sites, shifts, and coverage — in real time.",
     ],
   },
   {
+    id: "tasks",
     icon: CheckSquare,
     title: "Tasks & Compliance, Handled",
+    shortTitle: "Tasks",
+    videoLabel: "Automated compliance tracking in action",
     lines: [
       "Automate recurring tasks like fridge checks, cleaning logs, and audits.",
       "Every action is tracked, time-stamped, and ready for inspection.",
     ],
   },
   {
+    id: "multisite",
     icon: Building2,
     title: "Multi-Site, No Complexity",
+    shortTitle: "Multi-Site",
+    videoLabel: "Managing multiple locations from one view",
     lines: [
       "Run multiple locations with different hours, facilities, and staffing rules — all from one system.",
     ],
   },
   {
+    id: "team",
     icon: Users,
     title: "Team & Access Control",
+    shortTitle: "Team",
+    videoLabel: "Role-based access and team management",
     lines: [
       "Manage roles, permissions, and staffing without spreadsheets.",
       "Scale your team without losing control.",
     ],
   },
   {
+    id: "policy",
     icon: FileText,
     title: "Policy GPT",
+    shortTitle: "Policy GPT",
+    videoLabel: "Ask any question about your SOPs",
     lines: [
       "Instant answers to SOPs and policies — tailored to your practice.",
     ],
@@ -52,20 +72,10 @@ const features = [
   },
 ];
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      delay: i * 0.08,
-      ease: [0.25, 0.1, 0.25, 1] as const,
-    },
-  }),
-};
-
 const KeyFeatures = () => {
+  const [activeTab, setActiveTab] = useState(features[0].id);
+  const activeFeature = features.find((f) => f.id === activeTab)!;
+
   return (
     <section
       className="relative overflow-hidden py-24 px-4 sm:px-6 lg:px-8"
@@ -74,7 +84,6 @@ const KeyFeatures = () => {
           "linear-gradient(135deg, hsla(259, 42%, 86%, 1) 0%, hsla(193, 37%, 85%, 1) 24%, hsla(0, 0%, 96%, 1) 100%)",
       }}
     >
-      {/* Background grid */}
       <div
         className="absolute inset-0 opacity-[0.03]"
         style={{
@@ -105,79 +114,121 @@ const KeyFeatures = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="font-display font-bold text-center text-3xl sm:text-4xl lg:text-5xl leading-tight max-w-3xl mx-auto mb-16"
+          className="font-display font-bold text-center text-3xl sm:text-4xl lg:text-5xl leading-tight max-w-3xl mx-auto mb-12"
           style={{ color: "hsl(222 47% 11%)" }}
         >
           Everything you need to run your practice —{" "}
           <span className="text-gradient">in one place</span>
         </motion.h2>
 
-        {/* Feature grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {features.map((feature, i) => {
-            const Icon = feature.icon;
-            return (
+        {/* Tabbed Feature Showcase */}
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+          {/* Tab bar */}
+          <TabsList className="w-full h-auto bg-white/50 backdrop-blur-sm border border-white/60 rounded-xl p-1.5 flex flex-nowrap overflow-x-auto scrollbar-hide gap-1 mb-8 justify-start sm:justify-center">
+            {features.map((feature) => {
+              const Icon = feature.icon;
+              return (
+                <TabsTrigger
+                  key={feature.id}
+                  value={feature.id}
+                  className="flex items-center gap-2 px-4 py-2.5 rounded-lg whitespace-nowrap text-sm font-medium transition-all data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-md shrink-0"
+                >
+                  <Icon className="w-4 h-4" />
+                  <span className="hidden sm:inline">{feature.shortTitle}</span>
+                </TabsTrigger>
+              );
+            })}
+          </TabsList>
+
+          {/* Tab content with animation */}
+          <div className="relative min-h-[400px] sm:min-h-[350px]">
+            <AnimatePresence mode="wait">
               <motion.div
-                key={feature.title}
-                custom={i}
-                variants={cardVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.15 }}
-                whileHover={{
-                  scale: 1.03,
-                  boxShadow: "0 12px 32px -8px hsl(172 66% 50% / 0.18)",
-                  transition: { duration: 0.25 },
-                }}
-                className={`relative rounded-2xl border p-6 cursor-default transition-colors hover:border-primary/40 ${
-                  feature.comingSoon
-                    ? "border-dashed border-primary/30 bg-white/40 backdrop-blur-sm"
-                    : "border-white/60 bg-white/70 backdrop-blur-sm shadow-sm"
-                }`}
+                key={activeTab}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -16 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
               >
-                {feature.comingSoon && (
-                  <Badge
-                    variant="secondary"
-                    className="absolute top-4 right-4 text-[10px] bg-primary/10 text-primary border-primary/20"
-                  >
-                    Coming Soon
-                  </Badge>
-                )}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                  {/* Left: Description */}
+                  <div className="space-y-5">
+                    <div className="flex items-center gap-3">
+                      <h3
+                        className="font-display text-2xl sm:text-3xl font-bold"
+                        style={{ color: "hsl(222 47% 11%)" }}
+                      >
+                        {activeFeature.title}
+                      </h3>
+                      {activeFeature.comingSoon && (
+                        <Badge
+                          variant="secondary"
+                          className="text-[10px] bg-primary/10 text-primary border-primary/20"
+                        >
+                          Coming Soon
+                        </Badge>
+                      )}
+                    </div>
 
-                <motion.div
-                  initial={{ scale: 0.5, rotate: -15, opacity: 0 }}
-                  whileInView={{ scale: 1, rotate: 0, opacity: 1 }}
-                  viewport={{ once: true, amount: 0.5 }}
-                  transition={{ type: "spring", stiffness: 200, damping: 12, delay: i * 0.08 }}
-                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
-                  style={{ backgroundColor: "hsl(172 66% 50% / 0.12)" }}
-                >
-                  <Icon className="w-6 h-6" style={{ color: "hsl(172 66% 50%)" }} />
-                </motion.div>
+                    <ul className="space-y-3">
+                      {activeFeature.lines.map((line, j) => (
+                        <li
+                          key={j}
+                          className="flex items-start gap-3 font-body text-base leading-relaxed"
+                          style={{ color: "hsl(215 20% 40%)" }}
+                        >
+                          <Check className="w-5 h-5 shrink-0 mt-0.5" style={{ color: "hsl(172 66% 45%)" }} />
+                          {line}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
 
-                <h3
-                  className="font-display text-lg sm:text-xl font-semibold mb-2"
-                  style={{ color: "hsl(222 47% 11%)" }}
-                >
-                  {feature.title}
-                </h3>
+                  {/* Right: Video placeholder */}
+                  <div className="rounded-2xl border border-white/60 bg-white/70 backdrop-blur-sm shadow-xl overflow-hidden">
+                    {/* Browser chrome */}
+                    <div className="flex items-center gap-2 px-4 py-3 border-b border-border/50 bg-white/80">
+                      <div className="flex gap-1.5">
+                        <div className="w-2.5 h-2.5 rounded-full bg-destructive/60" />
+                        <div className="w-2.5 h-2.5 rounded-full bg-amber-400/60" />
+                        <div className="w-2.5 h-2.5 rounded-full bg-emerald-400/60" />
+                      </div>
+                      <span className="text-xs text-muted-foreground ml-2 font-body">
+                        {activeFeature.title}
+                      </span>
+                    </div>
 
-                <ul className="space-y-2">
-                  {feature.lines.map((line, j) => (
-                    <li
-                      key={j}
-                      className="flex items-start gap-2.5 font-body text-sm sm:text-base leading-relaxed"
-                      style={{ color: "hsl(215 20% 40%)" }}
-                    >
-                      <Check className="w-4 h-4 shrink-0 mt-1" style={{ color: "hsl(172 66% 45%)" }} />
-                      {line}
-                    </li>
-                  ))}
-                </ul>
+                    {/* Video area */}
+                    <div className="relative aspect-video bg-gradient-to-br from-muted/30 via-background to-muted/50 flex items-center justify-center cursor-pointer group">
+                      <div
+                        className="absolute inset-0 opacity-[0.04]"
+                        style={{
+                          backgroundImage: `linear-gradient(hsl(var(--glow) / 0.4) 1px, transparent 1px),
+                                            linear-gradient(90deg, hsl(var(--glow) / 0.4) 1px, transparent 1px)`,
+                          backgroundSize: "40px 40px",
+                        }}
+                      />
+
+                      <motion.div
+                        whileHover={{ scale: 1.08 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="relative z-10 w-16 h-16 rounded-full bg-primary flex items-center justify-center shadow-lg shadow-primary/30 group-hover:shadow-primary/50 transition-shadow"
+                      >
+                        <Play className="w-6 h-6 text-primary-foreground ml-0.5" fill="currentColor" />
+                      </motion.div>
+
+                      <div className="absolute bottom-4 left-0 right-0 text-center">
+                        <p className="text-sm text-muted-foreground font-body">
+                          {activeFeature.videoLabel}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </motion.div>
-            );
-          })}
-        </div>
+            </AnimatePresence>
+          </div>
+        </Tabs>
       </div>
     </section>
   );
