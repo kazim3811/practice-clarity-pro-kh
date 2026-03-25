@@ -48,9 +48,9 @@ const Hero = () => {
           className="font-display font-bold text-center text-glow leading-[1.05] tracking-tight max-w-4xl mx-auto text-5xl sm:text-6xl md:text-7xl lg:text-8xl"
           style={{ color: "hsl(222 47% 11%)" }}
         >
-          Run Your Clinic
+          Your Clinic Shouldn't
           <br />
-          <span className="text-gradient">Without the Chaos.</span>
+          <span className="text-gradient">Run on Spreadsheets.</span>
         </motion.h1>
 
         {/* Subheading */}
