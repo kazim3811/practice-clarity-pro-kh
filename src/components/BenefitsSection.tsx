@@ -201,6 +201,29 @@ const BenefitsSection = () => {
           ))}
         </div>
 
+        {/* CTA Box */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6 }}
+          className="w-full rounded-2xl bg-gradient-to-r from-primary to-[hsl(260,45%,65%)] p-10 sm:p-14 text-center flex flex-col items-center"
+        >
+          <h3 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-primary-foreground mb-3">
+            Less Admin. <span className="opacity-90">More Patient Care.</span>
+          </h3>
+          <p className="font-display font-medium text-lg sm:text-xl text-primary-foreground/70 mb-8">
+            What are you waiting for?
+          </p>
+          <button
+            onClick={() => setDemoOpen(true)}
+            className="inline-flex items-center px-8 py-4 rounded-xl bg-white text-primary font-display font-semibold text-lg hover:brightness-95 hover:scale-[1.02] transition-all shadow-lg"
+          >
+            Start Your Journey
+            <ArrowRight className="ml-2 w-5 h-5" />
+          </button>
+        </motion.div>
+
         <BookDemoDialog open={demoOpen} onOpenChange={setDemoOpen} />
       </div>
     </section>
