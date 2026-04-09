@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { Calendar, LayoutDashboard, CheckSquare, Building2, Users, FileText, Check, Play } from "lucide-react";
+import { Calendar, LayoutDashboard, CheckSquare, Building2, Users, FileText, Check } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { useState } from "react";
@@ -10,7 +10,7 @@ const features = [
     icon: Calendar,
     title: "Smart Rota Management",
     shortTitle: "Rotas",
-    videoLabel: "See how rotas are built in seconds",
+    image: "/placeholder.svg",
     lines: [
       "Plan rotas by room, shift, and site — not just names on a list.",
       "Copy weeks instantly, validate staffing, and publish with confidence.",
@@ -21,7 +21,7 @@ const features = [
     icon: LayoutDashboard,
     title: "Live Practice Dashboard",
     shortTitle: "Dashboard",
-    videoLabel: "Real-time visibility across your practice",
+    image: "/placeholder.svg",
     lines: [
       "Staff see exactly what they need for the day.",
       "Managers get full visibility across sites, shifts, and coverage — in real time.",
@@ -32,7 +32,7 @@ const features = [
     icon: CheckSquare,
     title: "Tasks & Compliance, Handled",
     shortTitle: "Tasks",
-    videoLabel: "Automated compliance tracking in action",
+    image: "/placeholder.svg",
     lines: [
       "Automate recurring tasks like fridge checks, cleaning logs, and audits.",
       "Every action is tracked, time-stamped, and ready for inspection.",
@@ -43,7 +43,7 @@ const features = [
     icon: Building2,
     title: "Multi-Site, No Complexity",
     shortTitle: "Multi-Site",
-    videoLabel: "Managing multiple locations from one view",
+    image: "/placeholder.svg",
     lines: [
       "Run multiple locations with different hours, facilities, and staffing rules — all from one system.",
     ],
@@ -53,7 +53,7 @@ const features = [
     icon: Users,
     title: "Team & Access Control",
     shortTitle: "Team",
-    videoLabel: "Role-based access and team management",
+    image: "/placeholder.svg",
     lines: [
       "Manage roles, permissions, and staffing without spreadsheets.",
       "Scale your team without losing control.",
@@ -64,7 +64,7 @@ const features = [
     icon: FileText,
     title: "Policy GPT",
     shortTitle: "Policy GPT",
-    videoLabel: "Ask any question about your SOPs",
+    image: "/placeholder.svg",
     lines: [
       "Instant answers to SOPs and policies — tailored to your practice.",
     ],
@@ -198,30 +198,13 @@ const KeyFeatures = () => {
                       </span>
                     </div>
 
-                    {/* Video area */}
-                    <div className="relative aspect-video bg-gradient-to-br from-muted/30 via-background to-muted/50 flex items-center justify-center cursor-pointer group">
-                      <div
-                        className="absolute inset-0 opacity-[0.04]"
-                        style={{
-                          backgroundImage: `linear-gradient(hsl(var(--glow) / 0.4) 1px, transparent 1px),
-                                            linear-gradient(90deg, hsl(var(--glow) / 0.4) 1px, transparent 1px)`,
-                          backgroundSize: "40px 40px",
-                        }}
+                    {/* Feature image */}
+                    <div className="aspect-video">
+                      <img
+                        src={activeFeature.image}
+                        alt={activeFeature.title}
+                        className="w-full h-full object-cover"
                       />
-
-                      <motion.div
-                        whileHover={{ scale: 1.08 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="relative z-10 w-16 h-16 rounded-full bg-primary flex items-center justify-center shadow-lg shadow-primary/30 group-hover:shadow-primary/50 transition-shadow"
-                      >
-                        <Play className="w-6 h-6 text-primary-foreground ml-0.5" fill="currentColor" />
-                      </motion.div>
-
-                      <div className="absolute bottom-4 left-0 right-0 text-center">
-                        <p className="text-sm text-muted-foreground font-body">
-                          {activeFeature.videoLabel}
-                        </p>
-                      </div>
                     </div>
                   </div>
                 </div>
