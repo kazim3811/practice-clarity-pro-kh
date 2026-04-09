@@ -1,23 +1,24 @@
 
 
-## Improve CTA Box Text Hierarchy and Button Color
+## Replace Video Placeholders with Feature Images
 
-### Problem
-The CTA text all reads at similar visual weight (white on gradient), making it feel flat. The button is white, inconsistent with the green primary CTA buttons used elsewhere (Header, Hero).
+### Changes to `src/components/KeyFeatures.tsx`
 
-### Changes to `src/components/BenefitsSection.tsx`
+1. **Add an `image` field to each feature** in the `features` array — use `/placeholder.svg` for all six features for now. This makes it easy to swap in real images later by just changing the path.
 
-1. **Headline** (line 228-229): Make "Less Admin." bright white and bold, make "More Patient Care." use a light yellow/warm white tint (`text-yellow-100` or similar) instead of `opacity-90` to create colour contrast between the two phrases.
+2. **Replace the video placeholder area** (the play button, grid overlay, and video label) with an `<img>` tag that displays `activeFeature.image`. Keep the browser chrome (traffic light dots + title bar) as-is for visual framing.
 
-2. **Subheading** (line 231-232): "What are you waiting for?" — bump up to `text-2xl`, use full white (`text-white`) instead of `text-primary-foreground/70`.
+3. **Image styling**: `w-full h-auto object-cover aspect-video` to maintain the same dimensions as the current video placeholder.
 
-3. **Trust line** (line 234-235): Keep smaller and muted but use `text-white/70` for slightly better readability.
+### How to swap in real images later
 
-4. **Button** (line 237-241): Change from white (`bg-white text-primary`) to the site's green primary style (`bg-primary text-primary-foreground`) matching the Hero and Header CTA buttons. Update shadow glow accordingly. Keep the larger size and arrow animation.
+Once you have real screenshots/mockups, either:
+- Upload them in chat and I'll wire them in
+- Place them in `public/` (e.g. `public/features/rota.png`) and update the paths
 
 ### Technical Details
-- Single file: `src/components/BenefitsSection.tsx`
-- Button classes change from `bg-white text-primary` to `bg-primary text-primary-foreground shadow-lg shadow-primary/20`
-- Headline span changes from `opacity-90` to a warm accent colour
-- Subheading gets size and opacity bumps
+- Single file edit: `src/components/KeyFeatures.tsx`
+- Add `image: string` property to each feature object
+- Remove the play button `motion.div`, grid overlay, and bottom label
+- Add `<img src={activeFeature.image} alt={activeFeature.title} />` in their place
 
