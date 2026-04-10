@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { Calendar, LayoutDashboard, CheckSquare, Building2, Users, FileText, Check, Expand, X } from "lucide-react";
+import { Calendar, LayoutDashboard, CheckSquare, Building2, Users, FileText, Check, Expand, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { useState } from "react";
