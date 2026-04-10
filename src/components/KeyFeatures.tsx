@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { Calendar, LayoutDashboard, CheckSquare, Building2, Users, FileText, Check, Expand, X } from "lucide-react";
+import { Calendar, LayoutDashboard, CheckSquare, Building2, Users, FileText, Check, Expand, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { useState } from "react";
@@ -10,7 +10,7 @@ const features = [
     icon: Calendar,
     title: "Smart Rota Management",
     shortTitle: "Rotas",
-    image: "/features/rota.png",
+    images: ["/features/rota-1.png", "/features/rota-2.png", "/features/rota-3.png"],
     lines: [
       "Plan rotas by room, shift, and site — not just names on a list.",
       "Copy weeks instantly, validate staffing, and publish with confidence.",
@@ -21,7 +21,7 @@ const features = [
     icon: LayoutDashboard,
     title: "Live Practice Dashboard",
     shortTitle: "Dashboard",
-    image: "/placeholder.svg",
+    images: ["/placeholder.svg"],
     lines: [
       "Staff see exactly what they need for the day.",
       "Managers get full visibility across sites, shifts, and coverage — in real time.",
@@ -32,7 +32,7 @@ const features = [
     icon: CheckSquare,
     title: "Tasks & Compliance, Handled",
     shortTitle: "Tasks",
-    image: "/placeholder.svg",
+    images: ["/placeholder.svg"],
     lines: [
       "Automate recurring tasks like fridge checks, cleaning logs, and audits.",
       "Every action is tracked, time-stamped, and ready for inspection.",
@@ -43,7 +43,7 @@ const features = [
     icon: Building2,
     title: "Multi-Site, No Complexity",
     shortTitle: "Multi-Site",
-    image: "/placeholder.svg",
+    images: ["/placeholder.svg"],
     lines: [
       "Run multiple locations with different hours, facilities, and staffing rules — all from one system.",
     ],
@@ -53,7 +53,7 @@ const features = [
     icon: Users,
     title: "Team & Access Control",
     shortTitle: "Team",
-    image: "/placeholder.svg",
+    images: ["/placeholder.svg"],
     lines: [
       "Manage roles, permissions, and staffing without spreadsheets.",
       "Scale your team without losing control.",
@@ -64,7 +64,7 @@ const features = [
     icon: FileText,
     title: "Policy GPT",
     shortTitle: "Policy GPT",
-    image: "/placeholder.svg",
+    images: ["/placeholder.svg"],
     lines: [
       "Instant answers to SOPs and policies — tailored to your practice.",
     ],
@@ -75,7 +75,17 @@ const features = [
 const KeyFeatures = () => {
   const [activeTab, setActiveTab] = useState(features[0].id);
   const [expanded, setExpanded] = useState(false);
+  const [carouselIndex, setCarouselIndex] = useState(0);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
   const activeFeature = features.find((f) => f.id === activeTab)!;
+
+  const handleTabChange = (tab: string) => {
+    setActiveTab(tab);
+    setCarouselIndex(0);
+  };
+
+  const images = activeFeature.images;
+  const hasMultiple = images.length > 1;
 
   return (
     <section
@@ -123,7 +133,7 @@ const KeyFeatures = () => {
         </motion.h2>
 
         {/* Tabbed Feature Showcase */}
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+        <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
           {/* Tab bar */}
           <TabsList className="w-full h-auto bg-white/50 backdrop-blur-sm border border-white/60 rounded-xl p-1.5 flex flex-nowrap overflow-x-auto scrollbar-hide gap-1 mb-8 justify-start sm:justify-center">
             {features.map((feature) => {
@@ -185,16 +195,58 @@ const KeyFeatures = () => {
                     </ul>
                   </div>
 
-                  {/* Right: Feature image */}
-                  <div className="relative group rounded-2xl shadow-xl overflow-hidden cursor-pointer" onClick={() => setExpanded(true)}>
-                    <img
-                      src={activeFeature.image}
-                      alt={activeFeature.title}
-                      className="w-full h-auto block"
-                    />
+                  {/* Right: Feature image carousel */}
+                  <div className="relative group rounded-2xl shadow-xl overflow-hidden">
+                    {/* Image */}
+                    <AnimatePresence mode="wait">
+                      <motion.img
+                        key={carouselIndex}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                        src={images[carouselIndex]}
+                        alt={`${activeFeature.title} - ${carouselIndex + 1}`}
+                        className="w-full h-auto block cursor-pointer"
+                        onClick={() => { setLightboxIndex(carouselIndex); setExpanded(true); }}
+                      />
+                    </AnimatePresence>
+
+                    {/* Carousel arrows */}
+                    {hasMultiple && (
+                      <>
+                        <button
+                          className="absolute left-2 top-1/2 -translate-y-1/2 p-1.5 rounded-full bg-foreground/50 text-background opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm hover:bg-foreground/70"
+                          onClick={() => setCarouselIndex((i) => (i - 1 + images.length) % images.length)}
+                        >
+                          <ChevronLeft className="w-4 h-4" />
+                        </button>
+                        <button
+                          className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 rounded-full bg-foreground/50 text-background opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm hover:bg-foreground/70"
+                          onClick={() => setCarouselIndex((i) => (i + 1) % images.length)}
+                        >
+                          <ChevronRight className="w-4 h-4" />
+                        </button>
+                      </>
+                    )}
+
+                    {/* Dots */}
+                    {hasMultiple && (
+                      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+                        {images.map((_, i) => (
+                          <button
+                            key={i}
+                            onClick={() => setCarouselIndex(i)}
+                            className={`w-2 h-2 rounded-full transition-all ${i === carouselIndex ? "bg-white scale-125" : "bg-white/50"}`}
+                          />
+                        ))}
+                      </div>
+                    )}
+
+                    {/* Expand CTA */}
                     <button
                       className="absolute bottom-3 right-3 flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-foreground/60 text-background text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm"
-                      onClick={(e) => { e.stopPropagation(); setExpanded(true); }}
+                      onClick={() => { setLightboxIndex(carouselIndex); setExpanded(true); }}
                     >
                       <Expand className="w-3.5 h-3.5" />
                       Expand
@@ -219,15 +271,35 @@ const KeyFeatures = () => {
             onClick={() => setExpanded(false)}
           >
             <motion.img
+              key={lightboxIndex}
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               transition={{ duration: 0.2 }}
-              src={activeFeature.image}
+              src={images[lightboxIndex]}
               alt={activeFeature.title}
               className="max-w-[95vw] max-h-[90vh] rounded-xl shadow-2xl object-contain"
               onClick={(e) => e.stopPropagation()}
             />
+
+            {/* Lightbox nav arrows */}
+            {hasMultiple && (
+              <>
+                <button
+                  className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+                  onClick={(e) => { e.stopPropagation(); setLightboxIndex((i) => (i - 1 + images.length) % images.length); }}
+                >
+                  <ChevronLeft className="w-6 h-6" />
+                </button>
+                <button
+                  className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+                  onClick={(e) => { e.stopPropagation(); setLightboxIndex((i) => (i + 1) % images.length); }}
+                >
+                  <ChevronRight className="w-6 h-6" />
+                </button>
+              </>
+            )}
+
             <button
               className="absolute top-6 right-6 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
               onClick={() => setExpanded(false)}
