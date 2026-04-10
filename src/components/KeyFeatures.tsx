@@ -74,6 +74,7 @@ const features = [
 
 const KeyFeatures = () => {
   const [activeTab, setActiveTab] = useState(features[0].id);
+  const [expanded, setExpanded] = useState(false);
   const activeFeature = features.find((f) => f.id === activeTab)!;
 
   return (
