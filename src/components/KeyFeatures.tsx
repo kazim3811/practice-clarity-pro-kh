@@ -199,11 +199,11 @@ const KeyFeatures = () => {
                     </div>
 
                     {/* Feature image */}
-                    <div className="aspect-video">
+                    <div>
                       <img
                         src={activeFeature.image}
                         alt={activeFeature.title}
-                        className="w-full h-full object-cover"
+                        className="w-full h-auto block"
                       />
                     </div>
                   </div>
