@@ -186,12 +186,19 @@ const KeyFeatures = () => {
                   </div>
 
                   {/* Right: Feature image */}
-                  <div className="rounded-2xl shadow-xl overflow-hidden">
+                  <div className="relative group rounded-2xl shadow-xl overflow-hidden cursor-pointer" onClick={() => setExpanded(true)}>
                     <img
                       src={activeFeature.image}
                       alt={activeFeature.title}
                       className="w-full h-auto block"
                     />
+                    <button
+                      className="absolute bottom-3 right-3 flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-foreground/60 text-background text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm"
+                      onClick={(e) => { e.stopPropagation(); setExpanded(true); }}
+                    >
+                      <Expand className="w-3.5 h-3.5" />
+                      Expand
+                    </button>
                   </div>
                 </div>
               </motion.div>
