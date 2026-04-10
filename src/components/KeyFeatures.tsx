@@ -198,20 +198,26 @@ const KeyFeatures = () => {
 
               {/* Right: Feature image carousel */}
               <div className="relative group rounded-2xl shadow-xl overflow-hidden">
-                {/* Image with smooth slide transition */}
-                <AnimatePresence mode="wait" initial={false}>
-                  <motion.img
-                    key={`${activeTab}-${carouselIndex}`}
-                    initial={{ opacity: 0, x: 40 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -40 }}
-                    transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
-                    src={images[carouselIndex]}
-                    alt={`${activeFeature.title} - ${carouselIndex + 1}`}
-                    className="w-full h-auto block cursor-pointer"
-                    onClick={() => { setLightboxIndex(carouselIndex); setExpanded(true); }}
-                  />
-                </AnimatePresence>
+                {/* Preload all images for this feature */}
+                {images.map((src, i) => (
+                  <link key={src} rel="preload" as="image" href={src} />
+                ))}
+
+                {/* Fixed aspect-ratio container for crossfade */}
+                <div className="relative aspect-video cursor-pointer" onClick={() => { setLightboxIndex(carouselIndex); setExpanded(true); }}>
+                  <AnimatePresence initial={false}>
+                    <motion.img
+                      key={`${activeTab}-${carouselIndex}`}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.5 }}
+                      src={images[carouselIndex]}
+                      alt={`${activeFeature.title} - ${carouselIndex + 1}`}
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                  </AnimatePresence>
+                </div>
 
                 {/* Carousel arrows */}
                 {hasMultiple && (
