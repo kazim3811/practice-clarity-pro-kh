@@ -184,28 +184,13 @@ const KeyFeatures = () => {
                     </ul>
                   </div>
 
-                  {/* Right: Video placeholder */}
-                  <div className="rounded-2xl border border-white/60 bg-white/70 backdrop-blur-sm shadow-xl overflow-hidden">
-                    {/* Browser chrome */}
-                    <div className="flex items-center gap-2 px-4 py-3 border-b border-border/50 bg-white/80">
-                      <div className="flex gap-1.5">
-                        <div className="w-2.5 h-2.5 rounded-full bg-destructive/60" />
-                        <div className="w-2.5 h-2.5 rounded-full bg-amber-400/60" />
-                        <div className="w-2.5 h-2.5 rounded-full bg-emerald-400/60" />
-                      </div>
-                      <span className="text-xs text-muted-foreground ml-2 font-body">
-                        {activeFeature.title}
-                      </span>
-                    </div>
-
-                    {/* Feature image */}
-                    <div>
-                      <img
-                        src={activeFeature.image}
-                        alt={activeFeature.title}
-                        className="w-full h-auto block"
-                      />
-                    </div>
+                  {/* Right: Feature image */}
+                  <div className="rounded-2xl shadow-xl overflow-hidden">
+                    <img
+                      src={activeFeature.image}
+                      alt={activeFeature.title}
+                      className="w-full h-auto block"
+                    />
                   </div>
                 </div>
               </motion.div>
