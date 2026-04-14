@@ -4,25 +4,42 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { useState, useEffect } from "react";
 
+type FeatureLine = {
+  emphasis: string;
+  text: string;
+};
+
 const features = [
   {
     id: "rota",
     icon: Calendar,
-    title: "Smart Rota Management",
-    shortTitle: "Rotas",
+    title: "Smart Rota planner",
+    shortTitle: "Smart Rota Planner",
     images: ["/features/rota-1.png", "/features/rota-2.png", "/features/rota-3.png"],
     lines: [
-      "Plan rota across sites and weeks, assign staff with simple drag-and-drop",
-      "Filter quickly by site and role. Add cross-site and temp staff fast",
-      "Use AM, PM, full-day, or custom shifts. Copy days or full weeks in seconds",
-      "Catch errors before publishing. Staff notified once new rota complete.",
-    ],
+      {
+        emphasis: "Multi-Site Scheduling:",
+        text: "Coordinate rotas across locations and weeks with an intuitive drag-and-drop interface.",
+      },
+      {
+        emphasis: "Instant Filtering:",
+        text: "Quickly surface staff by site or role, and add temporary or cross-site coverage in a few clicks.",
+      },
+      {
+        emphasis: "Rapid Replication:",
+        text: "Use preset shifts (AM, PM, Full-day) and duplicate daily or weekly schedules in seconds.",
+      },
+      {
+        emphasis: "Error-Free Publishing:",
+        text: "Automated validation catches conflicts before you publish, with instant notifications sent to the entire team.",
+      },
+    ] as FeatureLine[],
   },
   {
     id: "dashboard",
     icon: LayoutDashboard,
-    title: "Live Practice Dashboard",
-    shortTitle: "Dashboard",
+    title: "Dashboard",
+    shortTitle: "Operational Dashboard",
     images: [
       "/features/dashboard-1.png",
       "/features/dashboard-2.png",
@@ -31,58 +48,106 @@ const features = [
       "/features/dashboard-5.png",
     ],
     lines: [
-      "Full clarity on your shifts, assigned room, and on-call managers.",
-      "Plan ahead. See all completed rotas and print if needed.",
-      "Stay updated with upcoming and due tasks.",
-      "Visibility of daily patient capacity by site and session.",
-    ],
+      {
+        emphasis: "Real-Time Clarity:",
+        text: "At-a-glance visibility of current shifts, room assignments, and on-call leads.",
+      },
+      {
+        emphasis: "Operational Foresight:",
+        text: "Access historical rotas for planning and export physical copies whenever needed.",
+      },
+      {
+        emphasis: "Unified Task Tracking:",
+        text: "Monitor upcoming deadlines and due tasks from a single, centralized view.",
+      },
+      {
+        emphasis: "Capacity Intelligence:",
+        text: "Track daily patient capacity across every site and session in real-time.",
+      },
+    ] as FeatureLine[],
   },
   {
     id: "tasks",
     icon: CheckSquare,
-    title: "Tasks & Compliance, Handled",
-    shortTitle: "Tasks",
+    title: "Task Manager",
+    shortTitle: "Task Manager",
     images: [
       "/features/tasks-2.png",
       "/features/tasks-1.png",
       "/features/tasks-3.png",
     ],
     lines: [
-      "Create recurring tasks in seconds. Assign by person, job family, or all staff.",
-      "Roll tasks out across one or many sites. Auto-email assignees when tasks are created.",
-      "Filter and sort tasks fast to stay in control. Edit or retire tasks anytime.",
-      "Track status, due dates, and completions in one audit trail.",
-    ],
+      {
+        emphasis: "Recurring Workflows:",
+        text: "Deploy repeatable tasks in seconds, assigned by individual, job family, or the entire team.",
+      },
+      {
+        emphasis: "Multi-Site Deployment:",
+        text: "Roll out operational tasks across one or multiple sites simultaneously with automated email triggers.",
+      },
+      {
+        emphasis: "Dynamic Oversight:",
+        text: "Instantly filter and sort your task list to maintain total control; edit or retire workflows on the fly.",
+      },
+      {
+        emphasis: "Audit-Ready Tracking:",
+        text: "Every action is captured in a single, unified audit trail—tracking status, due dates, and completion.",
+      },
+    ] as FeatureLine[],
   },
   {
     id: "multisite",
     icon: Building2,
-    title: "Multi-Site, No Complexity",
-    shortTitle: "Multi-Site",
+    title: "Sites Manager",
+    shortTitle: "Sites Manager",
     images: ["/features/multisite-1.png", "/features/multisite-2.png"],
     lines: [
-      "Manage all your sites in one place.",
-      "Add new sites seamlessly as you grow.",
-      "Easily amend opening hours and operating days.",
-      "Add and assign clinical and non-clinical facilities and rooms.",
-    ],
+      {
+        emphasis: "Centralized Control:",
+        text: "Orchestrate all practice locations from a single, high-level command center.",
+      },
+      {
+        emphasis: "Scalable Growth:",
+        text: "Add new sites to your infrastructure seamlessly as your practice group expands.",
+      },
+      {
+        emphasis: "Flexible Operations:",
+        text: "Update opening hours and operating days across your network with immediate effect.",
+      },
+      {
+        emphasis: "Resource Mapping:",
+        text: "Precisely assign and manage clinical and non-clinical rooms and facilities for every site.",
+      },
+    ] as FeatureLine[],
   },
   {
     id: "team",
     icon: Users,
-    title: "Team & Access Control",
-    shortTitle: "Team",
+    title: "Teams Manager",
+    shortTitle: "Teams Manager",
     images: [
       "/features/team-1.png",
       "/features/team-2.png",
       "/features/team-3.png",
     ],
     lines: [
-      "Manage all your staff in one place. Add, edit and remove users with ease.",
-      "Centrally manage user profiles, roles, and permissions in one place.",
-      "Global directory to easily contact all your staff members.",
-      "Organise staff by site, job families and job titles.",
-    ],
+      {
+        emphasis: "Global Directory:",
+        text: "Maintain a single source of truth for all staff, with instant contact details for every team member.",
+      },
+      {
+        emphasis: "Granular Access Control:",
+        text: "Centrally manage user profiles, specific roles, and system permissions with surgical precision.",
+      },
+      {
+        emphasis: "Intelligent Organization:",
+        text: "Categorize your workforce by site, job family, and clinical title for streamlined management.",
+      },
+      {
+        emphasis: "Lifecycle Management:",
+        text: "Add, update, or offboard users with ease, keeping your practice security-tight.",
+      },
+    ] as FeatureLine[],
   },
   {
     id: "policy",
@@ -91,11 +156,23 @@ const features = [
     shortTitle: "Policy GPT",
     images: ["/features/policy-gpt-mockup.png"],
     lines: [
-      "AI trained on all your practices' SOPs and policy documents.",
-      "Talk to the AI in natural language to quickly retrieve the latest SOP or policy.",
-      "Security: data is ring-fenced and never shared with external LLM providers.",
-      "The AI is trained and grounded only on your data — no hallucinations.",
-    ],
+      {
+        emphasis: "Context-Aware AI:",
+        text: "A private LLM trained exclusively on your practice's SOPs and policy documentation.",
+      },
+      {
+        emphasis: "Natural Language Retrieval:",
+        text: "Query your internal knowledge base in plain English to surface the latest SOPs in seconds.",
+      },
+      {
+        emphasis: "Enterprise-Grade Privacy:",
+        text: "Your data is strictly ring-fenced—never shared with external providers or used for training global models.",
+      },
+      {
+        emphasis: "Grounded Accuracy:",
+        text: "Every response is anchored directly to your uploaded data, eliminating hallucinations and ensuring clinical compliance.",
+      },
+    ] as FeatureLine[],
     comingSoon: true,
   },
 ];
@@ -242,7 +319,10 @@ const KeyFeatures = () => {
                       style={{ color: "hsl(215 20% 40%)" }}
                     >
                       <Check className="w-5 h-5 shrink-0 mt-0.5" style={{ color: "hsl(172 66% 45%)" }} />
-                      {line}
+                      <span>
+                        <strong style={{ color: "hsl(222 47% 11%)" }}>{line.emphasis}</strong>{" "}
+                        {line.text}
+                      </span>
                     </motion.li>
                   ))}
                 </motion.ul>

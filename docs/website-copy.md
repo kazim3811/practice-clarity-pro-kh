@@ -53,47 +53,47 @@ These radio options in the Book a Demo dialog echo related operational pains (se
 
 **Tab labels (horizontal navigation):** Rotas · Dashboard · Tasks · Multi-Site · Team · Policy GPT
 
-#### Smart Rota Manager
+#### Smart Rota planning
 
-- Plan rota across sites and weeks, assign staff with simple drag-and-drop
-- Filter quickly by site and role. Add cross-site and temp staff fast
-- Use AM, PM, full-day, or custom shifts. Copy days or full weeks in seconds
-- Catch errors before publishing. Staff notified once new rota complete.
+- **Multi-Site Scheduling:** Coordinate rotas across locations and weeks with an intuitive drag-and-drop interface.
+- **Instant Filtering:** Quickly surface staff by site or role, and add temporary or cross-site coverage in a few clicks.
+- **Rapid Replication:** Use preset shifts (AM, PM, Full-day) and duplicate daily or weekly schedules in seconds.
+- **Error-Free Publishing:** Automated validation catches conflicts before you publish, with instant notifications sent to the entire team.
 
-#### Live Practice Dashboard
+#### Dashboard
 
-- Full clarity on your shifts, assigned room, and on-call managers.
-- Plan ahead. See all completed rotas and print if needed.
-- Stay updated with upcoming and due tasks.
-- Visibility of daily patient capacity by site and session.
+- **Real-Time Clarity:** At-a-glance visibility of current shifts, room assignments, and on-call leads.
+- **Operational Foresight:** Access historical rotas for planning and export physical copies whenever needed.
+- **Unified Task Tracking:** Monitor upcoming deadlines and due tasks from a single, centralized view.
+- **Capacity Intelligence:** Track daily patient capacity across every site and session in real-time.
 
-#### Tasks & Compliance, Handled
+#### Tasks
 
-- Create recurring tasks in seconds. Assign by person, job family, or all staff.
-- Roll tasks out across one or many sites. Auto-email assignees when tasks are created.
-- Filter and sort tasks fast to stay in control. Edit or retire tasks anytime.
-- Track status, due dates, and completions in one audit trail.
+- **Recurring Workflows:** Deploy repeatable tasks in seconds, assigned by individual, job family, or the entire team.
+- **Multi-Site Deployment:** Roll out operational tasks across one or multiple sites simultaneously with automated email triggers.
+- **Dynamic Oversight:** Instantly filter and sort your task list to maintain total control; edit or retire workflows on the fly.
+- **Audit-Ready Tracking:** Every action is captured in a single, unified audit trail—tracking status, due dates, and completion.
 
-#### Multi-Site, No Complexity
+#### Multi-site
 
-- Manage all your sites in one place.
-- Add new sites seamlessly as you grow.
-- Easily amend opening hours and operating days.
-- Add and assign clinical and non-clinical facilities and rooms.
+- **Centralized Control:** Orchestrate all practice locations from a single, high-level command center.
+- **Scalable Growth:** Add new sites to your infrastructure seamlessly as your practice group expands.
+- **Flexible Operations:** Update opening hours and operating days across your network with immediate effect.
+- **Resource Mapping:** Precisely assign and manage clinical and non-clinical rooms and facilities for every site.
 
-#### Team & Access Control
+#### Team
 
-- Manage all your staff in one place. Add, edit and remove users with ease.
-- Centrally manage user profiles, roles, and permissions in one place.
-- Global directory to easily contact all your staff members.
-- Organise staff by site, job families and job titles.
+- **Global Directory:** Maintain a single source of truth for all staff, with instant contact details for every team member.
+- **Granular Access Control:** Centrally manage user profiles, specific roles, and system permissions with surgical precision.
+- **Intelligent Organization:** Categorize your workforce by site, job family, and clinical title for streamlined management.
+- **Lifecycle Management:** Add, update, or offboard users with ease, keeping your practice security-tight.
 
 #### Policy GPT _(Coming Soon)_
 
-- AI trained on all your practices' SOPs and policy documents.
-- Talk to the AI in natural language to quickly retrieve the latest SOP or policy.
-- Security: data is ring-fenced and never shared with external LLM providers.
-- The AI is trained and grounded only on your data — no hallucinations.
+- **Context-Aware AI:** A private LLM trained exclusively on your practice's SOPs and policy documentation.
+- **Natural Language Retrieval:** Query your internal knowledge base in plain English to surface the latest SOPs in seconds.
+- **Enterprise-Grade Privacy:** Your data is strictly ring-fenced—never shared with external providers or used for training global models.
+- **Grounded Accuracy:** Every response is anchored directly to your uploaded data, eliminating hallucinations and ensuring clinical compliance.
 
 ### Trust / team narrative
 

@@ -57,12 +57,26 @@ const Header = () => {
             <SuperGPLogo />
           </a>
 
-          <button
-            onClick={() => setDemoOpen(true)}
-            className="hidden sm:inline-flex items-center px-5 py-2.5 rounded-lg bg-primary text-primary-foreground font-display font-semibold text-sm hover:brightness-110 transition-all"
-          >
-            Book a Demo
-          </button>
+          <div className="hidden sm:flex items-center gap-3">
+            <a
+              href="https://app.supergpapp.com/auth?mode=invite"
+              className="inline-flex items-center px-4 py-2.5 rounded-lg border border-primary/30 bg-gradient-to-r from-primary/12 to-primary/5 text-foreground font-display font-semibold text-sm hover:from-primary/18 hover:to-primary/10 transition-all"
+            >
+              I have an invitation code
+            </a>
+            <a
+              href="https://app.supergpapp.com/auth"
+              className="inline-flex items-center px-4 py-2.5 rounded-lg border border-accent/40 bg-gradient-to-r from-accent/20 to-accent/8 text-foreground font-display font-semibold text-sm hover:from-accent/28 hover:to-accent/14 transition-all"
+            >
+              Login
+            </a>
+            <button
+              onClick={() => setDemoOpen(true)}
+              className="inline-flex items-center px-5 py-2.5 rounded-lg bg-primary text-primary-foreground font-display font-semibold text-sm hover:brightness-110 transition-all"
+            >
+              Book a Demo
+            </button>
+          </div>
         </div>
       </motion.header>
 
