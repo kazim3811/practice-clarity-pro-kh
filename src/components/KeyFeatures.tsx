@@ -15,7 +15,7 @@ const features = [
     icon: Calendar,
     title: "Smart Rota planner",
     shortTitle: "Smart Rota Planner",
-    images: ["/features/rota-1.png", "/features/rota-2.png", "/features/rota-3.png"],
+    images: ["/features/rota-2.png", "/features/rota-3.png", "/features/rota-1.png"],
     lines: [
       {
         emphasis: "Multi-Site Scheduling:",
@@ -41,11 +41,10 @@ const features = [
     title: "Dashboard",
     shortTitle: "Operational Dashboard",
     images: [
-      "/features/dashboard-1.png",
-      "/features/dashboard-2.png",
       "/features/dashboard-3.png",
       "/features/dashboard-4.png",
-      "/features/dashboard-5.png",
+      "/features/dashboard-1.png",
+      "/features/dashboard-2.png",
     ],
     lines: [
       {
@@ -72,8 +71,8 @@ const features = [
     title: "Task Manager",
     shortTitle: "Task Manager",
     images: [
-      "/features/tasks-2.png",
       "/features/tasks-1.png",
+      "/features/tasks-2.png",
       "/features/tasks-3.png",
     ],
     lines: [
@@ -100,7 +99,11 @@ const features = [
     icon: Building2,
     title: "Sites Manager",
     shortTitle: "Sites Manager",
-    images: ["/features/multisite-1.png", "/features/multisite-2.png"],
+    images: [
+      "/features/multisite-1.png",
+      "/features/multisite-2.png",
+      "/features/multisite-3.png",
+    ],
     lines: [
       {
         emphasis: "Centralized Control:",
@@ -126,9 +129,11 @@ const features = [
     title: "Teams Manager",
     shortTitle: "Teams Manager",
     images: [
+      "/features/team-5.png",
       "/features/team-1.png",
       "/features/team-2.png",
       "/features/team-3.png",
+      "/features/team-4.png",
     ],
     lines: [
       {
@@ -242,11 +247,11 @@ const KeyFeatures = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.5 }}
-          className="flex justify-center mb-6"
+          className="flex justify-start mb-6"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-border bg-surface text-xs text-muted-foreground font-medium">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-border bg-surface font-display text-xs text-muted-foreground font-medium">
             <span className="w-2 h-2 rounded-full bg-primary glow-dot" />
-            THE PRODUCT
+            Introducing SuperGP
           </span>
         </motion.div>
 
@@ -256,27 +261,37 @@ const KeyFeatures = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="font-display font-bold text-center text-3xl sm:text-4xl lg:text-5xl leading-tight max-w-3xl mx-auto mb-12"
-          style={{ color: "hsl(222 47% 11%)" }}
+          className="font-display font-bold text-left text-3xl sm:text-4xl lg:text-5xl leading-tight max-w-3xl mb-12 text-on-light-heading"
         >
-          Everything you need to run your clincs, {" "}
-          <span className="text-gradient">effortlessly in a single app</span>
+          Everything you need to operate smoothly
         </motion.h2>
+
+        {/* Subheading */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="text-lg font-medium text-on-light-body -mt-8 mb-12"
+        >
+          Brought together in a single app with a modern UI, not something from the 90's!
+        </motion.p>
 
         {/* Tabbed Feature Showcase */}
         <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
           {/* Tab bar */}
-          <TabsList className="w-full h-auto bg-white/50 backdrop-blur-sm border border-white/60 rounded-xl p-1.5 flex flex-nowrap overflow-x-auto scrollbar-hide gap-1 mb-8 justify-start sm:justify-center">
+          <TabsList className="w-full h-auto bg-transparent mb-8 grid grid-cols-3 gap-2 sm:flex sm:flex-nowrap sm:justify-center sm:gap-1 sm:overflow-visible">
             {features.map((feature) => {
               const Icon = feature.icon;
               return (
                 <TabsTrigger
                   key={feature.id}
                   value={feature.id}
-                  className="flex items-center gap-2 px-4 py-2.5 rounded-lg whitespace-nowrap text-sm font-medium transition-all data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-md shrink-0"
+                  className="flex w-full min-w-0 min-h-[44px] items-center justify-center gap-2 px-2 py-2 text-black sm:min-h-0 sm:w-auto sm:shrink-0 sm:px-4 sm:py-1.5 rounded-full border border-white/5 bg-slate-900/[0.12] shadow-md backdrop-blur-md whitespace-nowrap text-sm font-medium transition-all data-[state=active]:bg-brand-signature data-[state=active]:text-white data-[state=active]:border-brand-signature"
                 >
-                  <Icon className="w-4 h-4" />
+                  <Icon className="w-4 h-4 shrink-0" aria-hidden />
                   <span className="hidden sm:inline">{feature.shortTitle}</span>
+                  <span className="sr-only sm:hidden">{feature.shortTitle}</span>
                 </TabsTrigger>
               );
             })}
@@ -288,10 +303,7 @@ const KeyFeatures = () => {
               {/* Copy: above screenshot on mobile; left column on lg */}
               <div className="space-y-5 lg:max-w-[32rem]">
                 <div className="flex items-center gap-3">
-                  <h3
-                    className="font-display text-2xl sm:text-3xl font-bold"
-                    style={{ color: "hsl(222 47% 11%)" }}
-                  >
+                  <h3 className="font-display text-2xl sm:text-3xl font-bold text-on-light-heading">
                     {activeFeature.title}
                   </h3>
                   {activeFeature.comingSoon && (
@@ -315,12 +327,11 @@ const KeyFeatures = () => {
                     <motion.li
                       key={j}
                       variants={featureListItemVariants}
-                      className="flex items-start gap-3 font-body text-base leading-relaxed"
-                      style={{ color: "hsl(215 20% 40%)" }}
+                      className="flex items-start gap-3 font-body text-base leading-relaxed text-on-light-body"
                     >
-                      <Check className="w-5 h-5 shrink-0 mt-0.5" style={{ color: "hsl(172 66% 45%)" }} />
+                      <Check className="w-5 h-5 shrink-0 mt-0.5 text-primary" />
                       <span>
-                        <strong style={{ color: "hsl(222 47% 11%)" }}>{line.emphasis}</strong>{" "}
+                        <strong className="text-on-light-heading font-semibold">{line.emphasis}</strong>{" "}
                         {line.text}
                       </span>
                     </motion.li>
@@ -336,7 +347,7 @@ const KeyFeatures = () => {
                 ))}
 
                 {/* Fixed aspect-ratio container for crossfade */}
-                <div className="relative aspect-video cursor-pointer" onClick={() => { setLightboxIndex(carouselIndex); setExpanded(true); }}>
+                <div className="relative aspect-video cursor-pointer bg-white" onClick={() => { setLightboxIndex(carouselIndex); setExpanded(true); }}>
                   <AnimatePresence initial={false}>
                     <motion.img
                       key={`${activeTab}-${carouselIndex}`}
@@ -346,7 +357,7 @@ const KeyFeatures = () => {
                       transition={{ duration: 0.5 }}
                       src={images[carouselIndex]}
                       alt={`${activeFeature.title} - ${carouselIndex + 1}`}
-                      className="absolute inset-0 w-full h-full object-cover"
+                      className="absolute inset-0 w-full h-full object-contain"
                     />
                   </AnimatePresence>
                 </div>

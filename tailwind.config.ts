@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
-        body: ['"Inter"', 'system-ui', 'sans-serif'],
+        display: ['"Chakra Petch"', "system-ui", "sans-serif"],
+        body: ['"Space Grotesk"', "system-ui", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -56,8 +56,11 @@ export default {
           raised: "hsl(var(--surface-raised))",
         },
         glow: "hsl(var(--glow))",
-        headline: "hsl(var(--headline))",
+        headline: "hsl(var(--headline) / <alpha-value>)",
         subtext: "hsl(var(--subtext))",
+        "on-light-heading": "hsl(var(--on-light-heading))",
+        "on-light-body": "hsl(var(--on-light-body))",
+        "on-light-muted": "hsl(var(--on-light-muted))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",

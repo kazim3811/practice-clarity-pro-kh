@@ -93,11 +93,11 @@ const TeamSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.5 }}
-          className="flex justify-center mb-6"
+          className="mb-6 flex justify-start"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-border bg-surface text-xs text-muted-foreground font-medium">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-border bg-surface font-display text-xs text-muted-foreground font-medium">
             <span className="w-2 h-2 rounded-full bg-primary glow-dot" />
-            THE TEAM
+            Meet the team
           </span>
         </motion.div>
 
@@ -107,10 +107,10 @@ const TeamSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="font-display font-bold text-center text-3xl sm:text-4xl lg:text-5xl leading-tight text-foreground mb-6"
+          className="mb-6 font-display text-3xl font-bold leading-tight text-foreground text-left sm:text-4xl lg:text-5xl"
         >
           Built by{" "}
-          <span className="text-gradient">People Who Get It</span>
+          <span>People Who Get It</span>
         </motion.h2>
 
         <motion.p
@@ -118,9 +118,9 @@ const TeamSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="font-body text-center text-muted-foreground text-base sm:text-lg leading-relaxed max-w-2xl mx-auto mb-16"
+          className="mb-16 max-w-2xl font-body text-base leading-relaxed text-muted-foreground text-left sm:text-lg"
         >
-          Built by NHS GPs and leaders in technology and product development. We saw how broken Practice management can be and built SuperGP to fix it.
+          SuperGP is designed by GP&apos;s and built by tech Experts.
         </motion.p>
 
         {/* Team cards — single surface per profile (photo, name, bio) */}
@@ -186,7 +186,7 @@ const TeamSection = () => {
                       {member.bio.map((paragraph) => (
                         <p
                           key={paragraph}
-                          className="w-full min-w-0 font-body text-sm leading-relaxed text-foreground/90 text-pretty"
+                          className="w-full min-w-0 font-display text-sm leading-relaxed text-foreground/90 text-pretty"
                         >
                           {paragraph}
                         </p>

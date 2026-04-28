@@ -226,11 +226,11 @@ const BenefitsSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.5 }}
-          className="flex justify-center mb-6"
+          className="mb-6 flex justify-start"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gray-200 bg-white text-xs text-gray-500 font-medium shadow-sm">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gray-200 bg-white font-display text-xs text-gray-500 font-medium shadow-sm">
             <span className="w-2 h-2 rounded-full bg-primary" />
-            WHY SUPERGP
+            Unlock the benefits
           </span>
         </motion.div>
 
@@ -240,10 +240,10 @@ const BenefitsSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="font-display font-bold text-center text-3xl sm:text-4xl lg:text-5xl leading-tight max-w-3xl mx-auto mb-14"
+          className="mb-14 max-w-3xl font-display text-3xl font-bold leading-tight text-left sm:text-4xl lg:text-5xl"
           style={{ color: "hsl(222 47% 11%)" }}
         >
-          Unlock Your Clinic's <span className="text-gradient">Full Potential</span>
+          Upgrade to SuperGP and remove the chaos
         </motion.h2>
 
         {/* Hero Card — gradient frame */}

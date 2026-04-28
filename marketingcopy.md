@@ -2,7 +2,7 @@
 
 **Headline** - 
 Run your practice, without the chaos
-ditch the spreadsheets and outdated programs for a modern day OS. Designed by GP's. Engineered by experts.
+ditch the spreadsheets and outdated programs for a modern day OS. Designed by GP's. Engineered by Experts.
 For Clinics, Practices and PCN's
 Less admin. More patient care
 

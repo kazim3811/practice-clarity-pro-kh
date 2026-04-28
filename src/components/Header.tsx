@@ -8,19 +8,19 @@ function SuperGPLogo() {
   const gid = `sg-logo-${rawId.replace(/:/g, "")}`;
 
   return (
-    <div className="flex items-center gap-2.5 select-none">
+    <div className="flex items-center gap-1.5 sm:gap-2 select-none">
       <svg
-        width="28"
-        height="28"
+        width="22"
+        height="22"
         viewBox="0 0 28 28"
-        className="shrink-0"
+        className="h-[22px] w-[22px] shrink-0 sm:h-6 sm:w-6 drop-shadow-[0_0_8px_rgba(255,255,255,0.1)]"
         aria-hidden
       >
         <defs>
           <linearGradient id={gid} x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stopColor="hsl(172 70% 42%)" />
-            <stop offset="52%" stopColor="hsl(180 50% 55%)" />
-            <stop offset="100%" stopColor="hsl(260 45% 65%)" />
+            <stop offset="0%" stopColor="hsl(172 70% 52%)" />
+            <stop offset="52%" stopColor="hsl(180 55% 65%)" />
+            <stop offset="100%" stopColor="hsl(260 50% 72%)" />
           </linearGradient>
         </defs>
         {/* Corner brackets — suggests focus / dashboard viewport */}
@@ -34,7 +34,7 @@ function SuperGPLogo() {
         />
         <circle cx="14" cy="14" r="2" fill={`url(#${gid})`} />
       </svg>
-      <span className="font-display font-bold text-headline text-lg sm:text-xl tracking-tight leading-none">
+      <span className="font-display text-base font-bold leading-none tracking-tight text-white sm:text-lg">
         Super<span className="text-gradient">GP</span>
       </span>
     </div>
@@ -47,35 +47,42 @@ const Header = () => {
   return (
     <>
       <motion.header
-        initial={{ y: -20, opacity: 0 }}
+        initial={{ y: -12, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 backdrop-blur-xl bg-background/80"
+        className="pointer-events-none absolute inset-x-0 top-0 z-30 px-4 pt-3 sm:px-6 sm:pt-4"
       >
-        <div className="container flex items-center justify-between h-16 px-6">
-          <a href="/" className="flex items-center rounded-md outline-none ring-offset-background focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2" aria-label="SuperGP — home">
-            <SuperGPLogo />
-          </a>
+        <div className="pointer-events-auto mx-auto flex w-full max-w-6xl justify-center">
+          <div className="flex w-full items-center justify-between gap-2 rounded-full border border-white/5 bg-slate-900/[0.12] px-3 py-1 shadow-md backdrop-blur-md sm:gap-3 sm:px-4 sm:py-1.5">
+            <a
+              href="/"
+              className="flex min-w-0 shrink items-center rounded-full outline-none ring-offset-slate-900 focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-1"
+              aria-label="SuperGP — home"
+            >
+              <SuperGPLogo />
+            </a>
 
-          <div className="hidden sm:flex items-center gap-3">
-            <a
-              href="https://app.supergpapp.com/auth?mode=invite"
-              className="inline-flex items-center px-4 py-2.5 rounded-lg border border-primary/30 bg-gradient-to-r from-primary/12 to-primary/5 text-foreground font-display font-semibold text-sm hover:from-primary/18 hover:to-primary/10 transition-all"
-            >
-              I have an invitation code
-            </a>
-            <a
-              href="https://app.supergpapp.com/auth"
-              className="inline-flex items-center px-4 py-2.5 rounded-lg border border-accent/40 bg-gradient-to-r from-accent/20 to-accent/8 text-foreground font-display font-semibold text-sm hover:from-accent/28 hover:to-accent/14 transition-all"
-            >
-              Login
-            </a>
-            <button
-              onClick={() => setDemoOpen(true)}
-              className="inline-flex items-center px-5 py-2.5 rounded-lg bg-primary text-primary-foreground font-display font-semibold text-sm hover:brightness-110 transition-all"
-            >
-              Book a Demo
-            </button>
+            <div className="hidden shrink-0 items-center gap-1.5 sm:flex sm:gap-2">
+              <a
+                href="https://app.supergpapp.com/auth?mode=invite"
+                className="inline-flex items-center rounded-md border border-white/10 bg-white/5 px-2.5 py-1 font-display text-xs font-semibold text-white/95 backdrop-blur-sm transition-all hover:border-white/15 hover:bg-white/10 sm:px-3 sm:text-sm"
+              >
+                I have an invitation code
+              </a>
+              <a
+                href="https://app.supergpapp.com/auth"
+                className="inline-flex items-center rounded-md border border-white/10 bg-white/5 px-2.5 py-1 font-display text-xs font-semibold text-white/95 backdrop-blur-sm transition-all hover:border-white/15 hover:bg-white/10 sm:px-3 sm:text-sm"
+              >
+                Login
+              </a>
+              <button
+                type="button"
+                onClick={() => setDemoOpen(true)}
+                className="inline-flex items-center rounded-md bg-white px-3 py-1 font-display text-xs font-semibold text-slate-900 shadow-sm transition-all hover:bg-white/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-1 focus-visible:ring-offset-slate-900 sm:px-4 sm:text-sm"
+              >
+                Book a Demo
+              </button>
+            </div>
           </div>
         </div>
       </motion.header>

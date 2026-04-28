@@ -1,98 +1,129 @@
-import { motion } from "framer-motion";
 import { Users, ShieldAlert, CalendarClock, MessageSquare, Database } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const painPoints = [
   {
     icon: Users,
     header: "Your Rota Falls Apart Weekly",
     body: "Your rota lives in spreadsheets, breaks constantly, and leaves you scrambling to plug last-minute gaps.",
-    impact: "£50k+ annual locum overspend",
   },
   {
     icon: ShieldAlert,
     header: "You're Not Audit-Ready",
     body: "Compliance is scattered across systems, so when inspections come, you're chasing evidence instead of being prepared.",
-    impact: "Critical audit risk",
   },
   {
     icon: CalendarClock,
     header: "You're Leaving Appointments on the Table",
     body: "Without a clear view of staffing and rooms, capacity goes unused and patients go unseen.",
-    impact: "15–20% appointment slots wasted",
   },
   {
     icon: MessageSquare,
     header: "Your Team Is Drowning in Admin",
     body: "Endless WhatsApps, emails, and updates eat into your day and slow everything down.",
-    impact: "20%+ of bandwidth lost",
   },
   {
     icon: Database,
     header: "Everything Lives in Different Places",
     body: "Staff, rota, and compliance data are split across tools—leading to duplication, confusion, and mistakes.",
-    impact: "Hours of repeated data entry weekly",
   },
 ];
 
-const PainCard = ({ point, index }: { point: typeof painPoints[number]; index: number }) => {
+const keyStats = [
+  { value: "£50k+", label: "annual locum overspend risk" },
+  { value: "15–20%", label: "appointment capacity wasted" },
+  { value: "20%+", label: "team bandwidth lost to admin" },
+  { value: "90 days", label: "annual effort on manual processes" },
+];
+
+const StickyPainCard = ({
+  point,
+  index,
+}: {
+  point: (typeof painPoints)[number];
+  index: number;
+}) => {
   const Icon = point.icon;
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 32 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.5, delay: index * 0.1, ease: [0.25, 0.1, 0.25, 1] }}
-      className="group flex flex-col rounded-2xl border-2 border-destructive/40 bg-muted/40 backdrop-blur-sm overflow-hidden cursor-default hover:border-destructive/60 h-full animate-pulse-border"
-      style={{ animationDelay: `${index * 0.3}s` }}
+    <div
+      className="sticky w-full"
+      style={{ top: `${88 + index * 24}px` }}
     >
-      <div className="flex-1 p-5 sm:p-6 flex flex-col">
-        <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-destructive/10 mb-4 shrink-0">
-          <Icon className="w-6 h-6 text-destructive" />
+      <div
+        className={cn(
+          "p-6 rounded-2xl shadow-lg flex flex-col h-auto w-full",
+          "bg-zinc-800 border border-zinc-700"
+        )}
+      >
+        <div className="flex items-start gap-4">
+          <div className="mt-0.5 rounded-lg bg-destructive/10 p-2.5 flex-shrink-0">
+            <Icon className="h-5 w-5 text-destructive" />
+          </div>
+          <div className="flex-1">
+            <p className="font-semibold text-lg text-foreground">{point.header}</p>
+            <p className="mt-2 text-sm leading-relaxed text-zinc-300 sm:text-base">
+              {point.body}
+            </p>
+          </div>
         </div>
-        <h3 className="font-display text-xl font-semibold text-foreground mb-2">{point.header}</h3>
-        <p className="text-muted-foreground text-base leading-relaxed flex-1">{point.body}</p>
       </div>
-      <div className="px-5 sm:px-6 py-3 bg-destructive/5 border-t border-border/40">
-        <p className="text-sm font-medium text-destructive">⚡ {point.impact}</p>
-      </div>
-    </motion.div>
+    </div>
   );
 };
 
 const PainPoints = () => {
+  const scrollContainerHeight = `calc(100vh + ${painPoints.length * 120}px)`;
+
   return (
-    <section className="bg-background py-24 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
-        >
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground leading-tight">
-            Stop running on spreadsheets.
-            <br />
-            <span className="text-gradient-red">It's costing you more than you think!</span>
+    <section className="bg-gradient-to-b from-zinc-300 via-zinc-400 to-slate-500 py-24 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto rounded-3xl border border-zinc-700/60 bg-zinc-900/95 p-6 shadow-2xl sm:p-8 lg:p-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+
+        {/* Left: sticky heading, stats */}
+        <div className="flex flex-col gap-6 lg:sticky lg:top-20">
+          <div className="inline-flex items-center gap-2 self-start rounded-full border border-zinc-600 bg-zinc-800 px-3 py-1 font-display text-sm">
+            <div className="h-2 w-2 rounded-full bg-destructive" />
+            <span className="text-zinc-300">We understand your challenges</span>
+          </div>
+
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight">
+            Drowning in admin and spreadsheets?
           </h2>
-          <p className="mt-4 text-muted-foreground text-lg max-w-2xl mx-auto">
-            We have expereinced your frustrations first hand!
+
+          <p className="text-base sm:text-lg leading-relaxed text-zinc-300">
+            It&apos;s costing you more than you think!
           </p>
-        </motion.div>
 
-        {/* Top row */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {painPoints.slice(0, 3).map((point, index) => (
-            <PainCard key={index} point={point} index={index} />
-          ))}
+          <div className="grid grid-cols-2 gap-3 mt-2">
+            {keyStats.map((stat) => (
+              <div
+                key={stat.label}
+                className="rounded-xl border border-zinc-600/80 bg-gradient-to-br from-zinc-800 via-zinc-800 to-zinc-700/90 p-4 ring-1 ring-inset ring-white/10 shadow-[0_8px_24px_rgba(15,23,42,0.35)]"
+              >
+                <p
+                  className="font-display text-2xl font-semibold leading-none sm:text-3xl text-destructive"
+                  aria-label={stat.value}
+                >
+                  {stat.value}
+                </p>
+                <p className="mt-2 text-xs leading-relaxed text-zinc-400 sm:text-sm">
+                  {stat.label}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Bottom row — centered */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-5 md:max-w-[calc(66.666%+0.625rem)] md:mx-auto lg:max-w-none lg:w-2/3 lg:mx-auto">
-          {painPoints.slice(3).map((point, index) => (
-            <PainCard key={index + 3} point={point} index={index + 3} />
+        {/* Right: scrolling stacking cards */}
+        <div
+          className="relative flex flex-col gap-4"
+          style={{ height: scrollContainerHeight }}
+        >
+          {painPoints.map((point, index) => (
+            <StickyPainCard key={point.header} point={point} index={index} />
           ))}
         </div>
+      </div>
       </div>
     </section>
   );

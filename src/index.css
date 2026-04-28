@@ -1,4 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&display=swap");
+@import url("https://api.fontshare.com/v2/css?f[]=satoshi@500,600,700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -6,58 +9,64 @@
 
 @layer base {
   :root {
-    --background: 222 47% 6%;
-    --foreground: 210 40% 98%;
+    /* Warm charcoal base (~#1A1714 family) */
+    --background: 28 14% 9%;
+    --foreground: 40 22% 96%;
 
-    --card: 222 40% 10%;
-    --card-foreground: 210 40% 98%;
+    --card: 26 12% 13%;
+    --card-foreground: 40 22% 96%;
 
-    --popover: 222 40% 10%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 26 12% 13%;
+    --popover-foreground: 40 22% 96%;
 
-    --primary: 172 66% 50%;
-    --primary-foreground: 222 47% 6%;
+    /* Desaturated clinical teal — primary actions / focus */
+    --primary: 174 32% 48%;
+    --primary-foreground: 28 22% 9%;
 
-    --secondary: 222 30% 14%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 26 10% 16%;
+    --secondary-foreground: 40 20% 96%;
 
-    --muted: 222 30% 14%;
-    --muted-foreground: 215 20% 55%;
+    --muted: 26 10% 16%;
+    --muted-foreground: 32 12% 62%;
 
-    --accent: 172 66% 50%;
-    --accent-foreground: 222 47% 6%;
+    /* Muted warm sand — secondary emphasis, less “template candy” */
+    --accent: 32 38% 58%;
+    --accent-foreground: 28 22% 10%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 72% 52%;
+    --destructive-foreground: 40 22% 98%;
 
-    --border: 222 30% 18%;
-    --input: 222 30% 18%;
-    --ring: 172 66% 50%;
+    --border: 26 10% 20%;
+    --input: 26 10% 20%;
+    --ring: 174 32% 48%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
     /* Custom tokens */
-    --glow: 172 66% 50%;
-    /* Matches heading text-gradient (teal → cyan → violet) */
-    --brand-gradient: linear-gradient(
-      135deg,
-      hsl(172 70% 42%) 0%,
-      hsl(180 50% 55%) 50%,
-      hsl(260 45% 65%) 100%
-    );
-    --surface: 222 35% 12%;
-    --surface-raised: 222 30% 16%;
-    --headline: 0 0% 100%;
-    --subtext: 215 20% 65%;
+    --glow: 174 36% 46%;
+    /* Electric Indigo — hero CTA / marketing glow (brand-guidelines.md) */
+    --glow-brand: 246 100% 66%;
+    /* Brand signature: Electric Indigo → Electric Cyan */
+    --brand-gradient: linear-gradient(135deg, #5b4fff 0%, #00d9f7 100%);
+    --surface: 26 11% 11%;
+    --surface-raised: 26 10% 15%;
+    /* Primary on-dark text ≈ #F0F4FF */
+    --headline: 225 100% 97%;
+    --subtext: 30 10% 68%;
 
-    --sidebar-background: 222 40% 10%;
-    --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 172 66% 50%;
-    --sidebar-primary-foreground: 222 47% 6%;
-    --sidebar-accent: 222 30% 14%;
-    --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 222 30% 18%;
-    --sidebar-ring: 172 66% 50%;
+    /* On-light section tokens (for light pastel/white surfaces) */
+    --on-light-heading: 222 47% 11%; /* SuperGP Navy ~#0F2057 */
+    --on-light-body: 215 20% 40%;    /* Slate 600    ~#475569 */
+    --on-light-muted: 215 16% 52%;   /* Slate 500    ~#64748B */
+
+    --sidebar-background: 26 12% 12%;
+    --sidebar-foreground: 40 22% 96%;
+    --sidebar-primary: 174 32% 48%;
+    --sidebar-primary-foreground: 28 22% 9%;
+    --sidebar-accent: 26 10% 16%;
+    --sidebar-accent-foreground: 40 20% 96%;
+    --sidebar-border: 26 10% 20%;
+    --sidebar-ring: 174 32% 48%;
   }
 }
 
@@ -68,17 +77,32 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: "Space Grotesk", system-ui, sans-serif;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Space Grotesk', system-ui, sans-serif;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Chakra Petch", system-ui, sans-serif;
   }
 }
 
 @layer utilities {
   .text-glow {
     text-shadow: 0 0 40px hsl(var(--glow) / 0.3);
+  }
+
+  .text-glow-hero {
+    text-shadow:
+      0 0 42px hsl(var(--glow-brand) / 0.28),
+      0 0 72px hsl(187 100% 48% / 0.12);
+  }
+
+  .bg-brand-signature {
+    background: var(--brand-gradient);
   }
 
   .glow-border {
